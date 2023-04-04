@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/style.css" rel="stylesheet"/>
+    <title>Calculadora</title>
+</head>
+<body>
+    <header class="intro">
+        <h1>Economia</br>100% elétrico</h1>
+ <!--    <img src="./images/header.jpeg" alt="carros"> -->
+    </header>
+
+    <!-- Seletor de KM -->
+
+    <section class="calculadora">
+        <div class="select-km">
+            <div class="tempo-selector">
+                <h3>Quantos km você roda por <span class="tempo">mês</span></h3>
+                <div class="tempo-buttons">
+                    <span class="tempo-button" id="dia">DIA</span>
+                    <span class="tempo-button" id="mes">MES</span>
+                    <span class="tempo-button" id="ano">ANO</span>
+                </div>
+            </div>
+            <div class="km-input">
+                <input type="range" id="km-range" name="km-range" min="0" max="5000" placeholder="0">
+            </div>
+        </div>
+    </section>
+
+    <!-- Seletor de tipo de veículo -->
+
+    <section class="veiculo-tipo">
+        <h3>Qual veículo você gostaria de comparar</h3>
+        <div class="tipo-seletor">
+            <div class="tipo hatch">
+                <img src="./images/e-js1_lateral.jpeg" alt="hatch">
+                <span class="nome-carro">HATCH</span>
+            </div>
+            <div class="tipo suv">
+                <img src="./images/e-js4_lateral.png" alt="suv">
+                <span class="nome-carro">SUV</span>
+            </div>
+            <div class="tipo sedan">
+                <img src="./images/e-j7_lateral.jpeg" alt="sedan">
+                <span class="nome-carro">SEDAN</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seletor de preço de gasolina -->
+
+    <section class="gasolina-preco">
+        <h3>Quanto você paga na gasolina?</h3>
+        <div class="gasolina-range">
+            <input type="range" id="gas-range" name="gas-range" min="4.50" max="10.00">
+        </div>
+    </section>
+    
+    <section class="resultados">
+    <h3>RESULTADOS PARA O<span class="e-js1">E-JS1</span> <span class="e-js4">E-JS4</span> <span class="e-j7">E-J7</span></h3>
+    <p class="subtitle">(clique no modelo desejado)</p>
+    <div class="tabela-resultados">
+        <table>
+            <tbody>
+            <tr>
+                <th ><!-- EM BRANCO --></th>
+                <td>DIA</td>
+                <td>MÊS</td>
+                <td>ANO</td>
+                <td>5 ANOS</td>
+            </tr>
+   
+            <tr>
+                <th id="vc-roda">VOCÊ RODA (KM)</th>
+                <td>28</td>
+                <td>850</td>
+                <td>10200</td>
+                <td>51000</td>
+            </tr>
+            <tr>
+                <th id="combustivel">COMBUSTÍVEL (R$)</th>
+                <td>22.00</td>
+                <td>850.50</td>
+                <td>6029.00</td>
+                <td>5700.30</td>
+            </tr>
+            <tr>
+                <th id="energia">ENERGIA ELÉTRICA (R$)</th>
+                <td>28</td>
+                <td>850</td>
+                <td>864.00</td>
+                <td>51000</td>
+            </tr>
+            <tr>
+                <th>ECONOMIA COMBUSTÍVEL</th>
+                <td id="eco">28</td>
+                <td>850</td>
+                <td>5169</td>
+                <td>51000</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+    <div class="mensagem-resultado">
+        <p>COMPRANDO UM HATCH COMO O E-JS1 VOCÊ</br><span class="economia">ECONOMIZA 430,40 REAIS POR MÊS.</span></p>
+    </div>
+    <div class="mensagem-emissao">
+        <p>Além de não emitir <span class="emissao">7140</span> toneladas de CO2 na atmosfera, dirigir sem vibrações, com aceleração instantânea e contínua!</p>
+    </div>
+    <div class="manutencao-main">
+        <h2>VEJA TAMBÉM AS DIFERENÇAS EM </br> MANUTENÇAO PARA AS DUAS TECNOLOGIAS:</h2>
+        <p class="manutencao-termico"> HATCH TÉRMICO: <span class="termico">663,90 REAIS POR MÊS.</span></p>
+        <P class="manutencao-eletrico"> E-JS1 100% ELÉTRICO: <span class="eletrico">38,30 REAIS POR MÊS.</span></P>
+    </div>
+    <div class="totalizando">
+        TOTALIZANDO EM UMA ECONOMIA MENSAL DE <span class="manutencao-economia">553,70 REAIS!</span>
+    </div>
+    <div class="economia-5-anos">
+        <p>Ou seja, nessas condições, na troca de m hatch térmico por um E-JS1 100% elétrico você economiza <span class="economia-total-5-anos">33221.07</span> reais num período de 5 anos!</p>
+    </div>
+</section>
+
+</body>
+<footer>
+    <script src="./js/km-range.js"/>
+    <script src="./js/calculadora.js"/>
+
+</footer>
+</html>

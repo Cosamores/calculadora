@@ -3,7 +3,7 @@
     src: url(fonts/BARLOW/Barlow-Bold.ttf);
 }
 html {
-    max-width: 1240px;
+    max-width: 2880px;
     font-family: 'Barlow';
     color: #1a3259;
     margin: 0 auto;
@@ -32,6 +32,8 @@ section {
 h1 {
     color: #1a3259;
     font-size: 50px;
+    background-color: #c1c9e4ad;
+    height: fit-content;
 }
 
 h2 {
@@ -44,11 +46,11 @@ h3 {
     font-size: 30px;
 }
 
-.calculadora {
+.dia-mes-ano {
     height: 180px;
     width: 100%;
     text-align: center;
-    margin: 10px 0 55px 0; 
+    margin: 0 0 0px 0; 
 }
 
 .tempo-buttons {
@@ -128,7 +130,6 @@ input[type="range"]::after {
 }
 
 input[type="range"]::before {
-    content: '0 km';
     left: 0;
     top: -3px;
     transform: translateY(-100%);
@@ -137,13 +138,29 @@ input[type="range"]::before {
 }
 
 input[type="range"]::after {
-    content: '5000km';
     right: 3px;
     top: -3px;
     transform: translateY(-100%);
     font-size: 20px;
     font-weight: 600;
     
+}
+
+
+.km-input input[type="range"]::before {
+    content: ''attr(min) '  km';
+}
+
+.km-input input[type="range"]::after {
+    content: ''attr(max) ' km';
+}
+
+.gasolina-range input[type="range"]::before {
+    content: 'R$ ' attr(min)'';
+}
+.gasolina-range input[type="range"]::after {
+    content: 'R$ ' attr(max) '' ;
+
 }
 
 /* input[type="range"]::-moz-range-track {} */
@@ -322,6 +339,7 @@ input[type="range"]::-webkit-slider-thumb {
 @media screen and (max-width: 768px) and (min-width: 144px) {
     html {
         font-size: 14px; 
+        margin: 0 auto;
     }
     
     header {
@@ -345,19 +363,29 @@ input[type="range"]::-webkit-slider-thumb {
         margin: 30px 0 30px 0;
         padding: 10px 0 0 0;
     }
-    .calculadora {
-        height: 140px; 
+    .dia-mes-ano { 
         margin: 0 auto;
         padding: 0 auto;
     }
 
+    
+    input[type="range"]::before, 
+    input[type="range"]::after {
+        font-size: 14px;
+    }
+
+    .km-input,
+    .gasolina-preco {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     .tempo-buttons {
         flex-direction: row-reverse; 
-        align-items: center;    }
+        align-items: center;  
+        padding: 10px 0 30px 0;
+     }
 
-    .tempo-button {
-        margin-bottom: 10px; 
-    }
 
     .veiculo-tipo h3 {
         margin-top: 30px;
@@ -366,8 +394,9 @@ input[type="range"]::-webkit-slider-thumb {
         height: 200px;
     }
     .tipo-seletor {
+        max-width: 95%;
         flex-direction: row; 
-
+        margin: 0 2% 0 2%;
     }
 
     .tipo {
@@ -375,8 +404,8 @@ input[type="range"]::-webkit-slider-thumb {
     }
 
     .tipo img {
-        max-width: 120px; 
-        max-height: 90px;
+        max-width: 100px; 
+        max-height: 80px;
     }
 
     .gasolina-preco h3{

@@ -5,6 +5,8 @@ const gasLabel = document.querySelector('.gasolina-range');
 const gasInput = gasLabel.children[0];
 
 const thumbWidth = 22;
+const thumbWidthG = 29;
+
 let timeValue = 0;
 let rangeValue = 0;
 let gasValue = 0;
@@ -26,7 +28,7 @@ function positionBubble() {
   const { min, max, value } = rangeInput;
   const total = Number(max) - Number(min);
   const perc = (Number(value) - Number(min)) / total;
-  const offset = (thumbWidth / 2) - (thumbWidth * perc);
+  const offset = (thumbWidth / 2) - (thumbWidth * 2 * perc);
 
   rangeBubble.style.left = `calc(${perc * 100}% + ${offset}px)`;
   rangeBubble.textContent = value;
@@ -36,7 +38,7 @@ function positionGasBubble() {
   const { min, max, value } = gasInput;
   const total = Number(max) - Number(min);
   const perc = (Number(value) - Number(min)) / total;
-  const offset = (thumbWidth / 2) - (thumbWidth * perc);
+  const offset = (thumbWidthG / 2) - (thumbWidthG * 2 * perc);
 
   gasBubble.style.left = `calc(${perc * 100}% + ${offset}px)`;
   gasBubble.textContent = value;

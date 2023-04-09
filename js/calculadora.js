@@ -155,12 +155,14 @@ function calculateResults() {
 
   // Diferença entre os dois modelos
   const economiaManutencao = custoManutencaoG - custoManutencaoE; 
-  const economia = custoTotalG - custoTotalE;
+  const economia = custoGasolinaG - custoEnergiaE;
+  const economiaTotal = custoTotalG - custoTotalE; 
   
-  // Atualize o DOM com os novos resultados
-  // Complete esta parte com o código necessário para atualizar os elementos HTML
-  // com os resultados calculados. Use os exemplos a seguir como um guia:
-  
+  console.log('economia: ' + economia, 'custo total Gas: ' + custoTotalG, 'custo total Eletrico: ' +  custoTotalE);
+  console.log( 'custo total Gas: ' + custoTotalG);
+  console.log('custo total Eletrico: ' +  custoTotalE);
+  console.log(  document.querySelector('.economia-dia').textContent)
+
   document.querySelector('.km-rodados-dia').textContent = kmRodadosE.toFixed(2);
   document.querySelector('.combustivel-dia').textContent = custoGasolinaG.toFixed(2);
   document.querySelector('.energia-dia').textContent = custoEnergiaE.toFixed(2);
@@ -182,12 +184,12 @@ function calculateResults() {
   document.querySelector('.economia-5-anos').textContent = (economia * (5 * 365)).toFixed(2);
   
   // Atualizar outros elementos vinculados à calculadora
-  document.querySelector('.economia').textContent = `ECONOMIZA ${economia.toFixed(2)} REAIS POR MÊS.`;
+  document.querySelector('.economia').textContent = `ECONOMIZA ${economiaTotal.toFixed(2)} REAIS POR MÊS.`;
   document.querySelector('.emissao').textContent = emissao.toFixed(2);
   document.querySelector('.termico').textContent = custoManutencaoG.toFixed(2);
   document.querySelector('.eletrico').textContent = custoManutencaoE.toFixed(2);
   document.querySelector('.manutencao-economia').textContent = economiaManutencao.toFixed(2);
-  document.querySelector('.economia-total-5-anos').textContent = (economia * (5 * 365)).toFixed(2);
+  document.querySelector('.economia-total-5-anos').textContent = (economiaTotal * (5 * 365)).toFixed(2);
   }
 
   setInterval(calculateResults(),500)

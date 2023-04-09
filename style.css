@@ -311,11 +311,13 @@ input[type="range"]::-webkit-slider-thumb {
     font-weight: 600;
 }
 
-.mensagem-emissao, .economia-5-anos, .manutencao-termico, .manutencao-eletrico {
+.mensagem-emissao, .economia-total-5-anos, .manutencao-termico, .manutencao-eletrico {
     font-family: 'Barlow-SemiBold 2', tahoma;
     color: #0d4395;
     font-size: 20px;
 }
+
+
 
 @media screen and (max-width: 768px) and (min-width: 144px) {
     html {
@@ -402,5 +404,8 @@ input[type="range"]::-webkit-slider-thumb {
     .thead div,
     .tbody div {
         width: 100%; 
+    }
+    .tbody div {
+        font-size: 14px;
     }
 }

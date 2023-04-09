@@ -387,13 +387,13 @@ input[type="range"]::-webkit-slider-thumb {
     }
 
     .tabela-resultados {
-        flex-direction: row; /* Organizar a tabela de resultados na vertical */
+        flex-direction: row; 
         align-items: center;
     }
 
     .thead,
     .tbody {
-        margin: 10px 2px; /* Adicionar espaço entre as linhas da tabela de resultados */
+        margin: 10px 2px; 
         width: 100%;
         font-size: 9px;
         flex: 1;
@@ -401,6 +401,6 @@ input[type="range"]::-webkit-slider-thumb {
 
     .thead div,
     .tbody div {
-        width: 100%; /* Aumentar a largura das células da tabela de resultados */
+        width: 100%; 
     }
 }

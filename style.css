@@ -374,12 +374,14 @@ input[type="range"]::-webkit-slider-thumb {
         font-size: 14px;
     }
 
-    .km-input,
-    .gasolina-preco {
-        display: flex;
-        /* align-items: center; */
-        justify-content: center;
+    .gasolina-preco h3 {
+        padding-bottom: 30px;
     }
+
+    .gasolina-range {
+        left: 12px;
+    }
+
     .tempo-buttons {
         flex-direction: row-reverse; 
         align-items: center;  

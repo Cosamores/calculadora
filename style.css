@@ -3,7 +3,7 @@
     src: url(fonts/BARLOW/Barlow-Bold.ttf);
 }
 html {
-    max-width: 2880px;
+    max-width: 1980px;
     font-family: 'Barlow';
     color: #1a3259;
     margin: 0 auto;
@@ -377,7 +377,7 @@ input[type="range"]::-webkit-slider-thumb {
     .km-input,
     .gasolina-preco {
         display: flex;
-        align-items: center;
+        /* align-items: center; */
         justify-content: center;
     }
     .tempo-buttons {

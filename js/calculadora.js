@@ -185,7 +185,6 @@ function calculateResults() {
   document.querySelector('.energia-5-anos').textContent = (custoEnergiaE * (5 * 365)).toFixed(2);
   document.querySelector('.economia-5-anos').textContent = (economia * (5 * 365)).toFixed(2);
   
-  // Atualizar outros elementos vinculados à calculadora
   document.querySelector('.economia').textContent = `ECONOMIZA ${economiaTotal.toFixed(2)} REAIS POR MÊS.`;
   document.querySelector('.emissao').textContent = emissao.toFixed(2);
   document.querySelector('.termico').textContent = custoManutencaoG.toFixed(2);

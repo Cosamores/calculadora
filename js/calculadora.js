@@ -31,7 +31,7 @@ function positionBubble() {
   const offset = (thumbWidth / 2) - (thumbWidth * 2 * perc);
 
   rangeBubble.style.left = `calc(${perc * 100}% + ${offset}px)`;
-  rangeBubble.textContent = value;
+  rangeBubble.textContent = `${value} km`;
 }
 
 function positionGasBubble() {
@@ -41,7 +41,7 @@ function positionGasBubble() {
   const offset = (thumbWidthG / 2) - (thumbWidthG * 2 * perc);
 
   gasBubble.style.left = `calc(${perc * 100}% + ${offset}px)`;
-  gasBubble.textContent = value;
+  gasBubble.textContent = `R$ ${Number(value).toFixed(2)}`;
 }
 
 positionBubble();

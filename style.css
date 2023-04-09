@@ -3,8 +3,7 @@
     src: url(fonts/BARLOW/Barlow-Bold.ttf);
 }
 html {
-    width: 100%;
-    max-width: fit-content;
+    max-width: 1240px;
     font-family: 'Barlow';
     color: #1a3259;
     margin: 0 auto;
@@ -20,6 +19,7 @@ header {
     justify-content: center;
     text-align: center;
     padding: 0;
+    width: 100%;
 }
 
 section {
@@ -58,6 +58,7 @@ h3 {
     width: 100%;
     margin-bottom: 15px;
     cursor: pointer;
+    padding: 20px 0 50px 0;
 }
 
 .tempo-button {
@@ -69,13 +70,18 @@ h3 {
     outline: inherit;
 }
 
+.tempo-button.active {
+    color: #0ca9e1;
+    background-color: rgba(222, 184, 135, 0.276);
+}
+
 .tempo-button:link,
 .tempo-button:visited,
 .tempo-button:hover,
 .tempo-button:active {
     
     text-decoration: none;
-    color: #17315b;
+    color: inherit;
 }
 
 .nome-carro {
@@ -84,6 +90,11 @@ h3 {
     border: transparent;
     background-color: transparent;
     overflow: hidden;
+}
+
+.active {
+    color: #0ca9e1;
+    background-color: rgba(222, 184, 135, 0.276);
 }
 
 .nome-carro:active,
@@ -117,19 +128,19 @@ input[type="range"]::after {
 }
 
 input[type="range"]::before {
-    content: attr(min);
+    content: '0 km';
     left: 0;
     top: -3px;
-    transform: translateX(calc(-100% - 5px));
+    transform: translateY(-100%);
     font-size: 20px;
     font-weight: 600;
 }
 
 input[type="range"]::after {
-    content: attr(max);
+    content: '5000km';
     right: 3px;
     top: -3px;
-    transform: translateX(calc(-100% + 100px));
+    transform: translateY(-100%);
     font-size: 20px;
     font-weight: 600;
     
@@ -304,4 +315,92 @@ input[type="range"]::-webkit-slider-thumb {
     font-family: 'Barlow-SemiBold 2', tahoma;
     color: #0d4395;
     font-size: 20px;
+}
+
+@media screen and (max-width: 768px) and (min-width: 144px) {
+    html {
+        font-size: 14px; 
+    }
+    
+    header {
+        height: 220px; 
+        margin: 0 auto;
+    }
+
+    h1 {
+        font-size: 32px; 
+    }
+
+    h2 {
+        font-size: 24px; 
+    }
+
+    h3 {
+        font-size: 20px; 
+    }
+
+    section {
+        margin: 30px 0 30px 0;
+        padding: 10px 0 0 0;
+    }
+    .calculadora {
+        height: 140px; 
+        margin: 0 auto;
+        padding: 0 auto;
+    }
+
+    .tempo-buttons {
+        flex-direction: row-reverse; 
+        align-items: center;    }
+
+    .tempo-button {
+        margin-bottom: 10px; 
+    }
+
+    .veiculo-tipo h3 {
+        margin-top: 30px;
+    }
+    .veiculo-tipo {
+        height: 200px;
+    }
+    .tipo-seletor {
+        flex-direction: row; 
+
+    }
+
+    .tipo {
+        margin-bottom: 20px; 
+    }
+
+    .tipo img {
+        max-width: 120px; 
+        max-height: 90px;
+    }
+
+    .gasolina-preco h3{
+        padding: 0 0 30px;
+        margin: 0;
+    }
+
+    .resultados {
+        padding: 0 0 20px 0;
+    }
+
+    .tabela-resultados {
+        flex-direction: row; /* Organizar a tabela de resultados na vertical */
+        align-items: center;
+    }
+
+    .thead,
+    .tbody {
+        margin: 10px 2px; /* Adicionar espaço entre as linhas da tabela de resultados */
+        width: 100%;
+        font-size: 9px;
+        flex: 1;
+    }
+
+    .thead div,
+    .tbody div {
+        width: 100%; /* Aumentar a largura das células da tabela de resultados */
+    }
 }

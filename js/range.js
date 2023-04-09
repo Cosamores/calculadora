@@ -30,8 +30,12 @@ function positionBubble() {
 	const offset = (thumbWidth/2) - (thumbWidth * perc);
 
 	rangeBubble.style.left = `calc(${perc * 100}% + ${offset}px)`;
-	rangeBubble.textContent = value;
-	
+	bubbleLeft = rangeBubble.textContent;
+	bubbleLeft = value
+	const bubbleNumber = Number(value);
+	console.log(bubbleLeft);
+	//return bubbleNumber;
+
 	//rangeBubble.style.transform = `translate(-${perc * 100}%)`
 	}
 
@@ -41,18 +45,25 @@ function positionGasBubble() {
 	const perc = (Number(value) - Number(min)) / total;
 	const offset = (thumbWidth/2) - (thumbWidth * perc);
 
+
 	gasBubble.style.left = `calc(${perc * 100}% + ${offset}px)`;
-	gasBubble.textContent = value;
-		//rangeBubble.style.transform = `translate(-${perc * 100}%)`
+	bubbleLeft = gasBubble.textContent 
+	bubbleLeft = value;
+   console.log(bubbleLeft)
+	return bubbleLeft;
+	//rangeBubble.style.transform = `translate(-${perc * 100}%)`
 }
 
-positionBubble()
-positionGasBubble();
-
-
-rangeInput.addEventListener('input', positionBubble)
-gasInput.addEventListener('input', positionGasBubble)
-
+document.addEventListener('DOMContentLoaded', () => {
+rangeInput.addEventListener('input', () => {
+    positionBubble();
+    rangeValue = Number(rangeBubble.textContent); 
+    })
+gasInput.addEventListener('input', () => {
+    positionGasBubble();
+    gasValue = Number(gasBubble.textContent);   
+})
+})
 
 	const timeList = document.querySelectorAll('.tempo-button');
 	timeList.forEach((e) => {
@@ -60,16 +71,17 @@ gasInput.addEventListener('input', positionGasBubble)
 			timeKm = document.querySelector('.tempo');
 			timeKm.innerText = e.target.innerText.toLowerCase();
 			timeValue = Number(e.target.id);
-
+			//console.log(timeValue)
+			return timeValue;
 		})
 		})
 
 		const Carro = {
-			nome: this.nome,
-			manutencaoE: this.manutencaoE,
-			manutencaoG: this.manutencaoG,
-			consumoE: this.consumoE,
-			consumoG: this.consumoG,
+			nome: '',
+			manutencaoE: 0,
+			manutencaoG: 0,
+			consumoE: 0,
+			consumoG: 0,
 		}
 
 
@@ -79,17 +91,19 @@ const manutencaoEl = [0.045, 0.050, 0.049]
 const manutencaoGas = [0.19, 0.22, 0.21]
 const precoEnergia = 0.85;
 
+
 const carrosTipo = document.querySelectorAll('.nome-carro');
 	carrosTipo.forEach((e) => {
 	e.addEventListener('click', (e) => {
 		nomeCarro =  (e.target.alt || e.target.innerText).trim();
 		
-		if (nomeCarro.toLowerCase() =='hatch') {
+		if (nomeCarro.toLowerCase() =='hatch' || nomeCarro.toLowerCase() == '') {
 			Carro.nome = nomeCarro;
 			Carro.manutencaoE = Number(manutencaoEl[0]);
-			Carro.consumoE = Number(consumoEl[0]);
 			Carro.manutencaoG = Number(manutencaoGas[0]);
 			Carro.consumoG = Number(consumoGas[0]);
+			return Carro;
+			
 		}
 		if (nomeCarro.toLowerCase() == 'sedan') {
 			Carro.nome = nomeCarro;
@@ -108,19 +122,47 @@ const carrosTipo = document.querySelectorAll('.nome-carro');
 	})
 })
 
+// const gasValue = gasBubble.textContent;
 
 
-const gasValue = Number(gasBubble.textContent);
-const rangeValue = Number(rangeBubble.textContent);
+const gasValue = Number(gasValue.textContent);
+const rangeValue =Number(rangeBubble.textContent);
 const gastoTotalEl = [];
 const gastoTotalGas = []
+
+console.log(gasValue);
+
+	  function calcGastoTotal(carro) {
+		const { consumoE, manutencaoE, consumoG, manutencaoG } = carro;
+		const gastoTotalEl = (rangeValue * precoEnergia * consumoE + rangeValue * manutencaoE) * timeValue;
+		const gastoTotalGas = (rangeValue * gasValue * consumoG + rangeValue * manutencaoG) * timeValue;
+	  
+		console.log(gastoTotalEl, gastoTotalGas );
+		return { gastoTotalEl, gastoTotalGas };
+	  }
+	  
+	  function calcEconomia(carro) {
+		const { gastoTotalEl, gastoTotalGas } = calcGastoTotal(carro);
+		const economia = gastoTotalGas - gastoTotalEl;
+	  
+		console.log(economia);
+		return economia;
+	  }
+	  
+/* 	  calcGastoTotal(Carro);
+	  calcEconomia(Carro) */
+	
+	  // Calcular a economia e exibir no console ou em algum elemento do DOM
+	  const economia = calcEconomia(Carro);
+	  console.log(`Economia para o carro ${Carro.nome}: ${economia.toFixed(2)}`);
+
 
 
 const calcGastoEl = (carro) => {
 
 	const { consumoE, manutencaoE } = Carro;
-	const consuEl = ((rangeValue * precoEnergia) * consumoE) * timeValue; 
-	const manuTotal = (rangeValue * manutencaoE) * timeValue;
+	const consuEl = ((Number(rangeValue) * Number(precoEnergia)) * consumoE) * timeValue; 
+	const manuTotal = (Number(rangeValue) * Number(manutencaoE)) * Number(timeValue);
 	const consumoTotal = consuEl + manuTotal;
 	gastoTotalEl.push(consuEl,  manuTotal, consumoTotal);
 	console.log(consumoTotal)

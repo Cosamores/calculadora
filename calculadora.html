@@ -18,11 +18,11 @@
     <section class="calculadora">
         <div class="select-km">
             <div class="tempo-selector">
-                <h3>Quantos km você roda por <span class="tempo" default="mês">mês</span></h3>
+                <h3>Quantos km você roda por <span class="tempo">mês</span></h3>
                 <div class="tempo-buttons">
-                    <button class="tempo-button" id="1" value="1">DIA</a>
-                    <button class="tempo-button" id="30" value="30">MÊS</a>
-                    <button class="tempo-button" id="365" value="365">ANO</a>
+                    <button class="tempo-button" id="1" value="1">DIA</button>
+                    <button class="tempo-button" id="30" value="30">MÊS</button>
+                    <button class="tempo-button" id="365" value="365">ANO</button>
                 </div>
             </div>
             <label for="km" class="km-input">
@@ -37,17 +37,17 @@
         <h3>Qual veículo você gostaria de comparar</h3>
         <div class="tipo-seletor">
             <div class="tipo hatch">
-                <button class="nome-carro" value="hatch">
+                <button class="nome-carro hatch" value="hatch">
                 <img src="./images/e-js1_lateral.jpeg" alt="hatch"></br>
                 HATCH</button>
             </div>
             <div class="tipo suv">
-                <button class="nome-carro" value="suv"></a>
+                <button class="nome-carro suv" value="suv">
                 <img src="./images/e-js4_lateral.png" alt="suv"></br> 
                 SUV</button>
             </div>
             <div class="tipo sedan">
-                <button class="nome-carro" value="sedan">
+                <button class="nome-carro hatch" value="sedan">
                 <img src="./images/e-j7_lateral.jpeg" alt="sedan"> </br> 
                 SEDAN
                 </button>
@@ -77,34 +77,38 @@
             </div>
    
             <div class="tbody">
-                <div >DIA</div>
-                <div>28</div>
-                <div></div>
-                <div></div>
-                <div></div>
+                <div class="hhead">DIA</div>
+                <div class="km-rodados-dia">28</div>
+                <div class="combustivel-dia"></div>
+                <div class="energia-dia"></div>
+                <div class="economia-dia"></div>
             </div>
             <div class="tbody">
                 <div>MÊS</div>
-                <div>850</div>
-                <div></div>
-                <div></div>
-                <div></div>
+                <div class="km-rodados-mes"></div>
+                <div class="combustivel-mes"></div>
+                <div class="energia-mes"></div>
+                <div class="economia-mes"></div>
             </div>
             <div class="tbody">
                 <div>ANO</div>
-                <div>10200</div>
-                <div>6029</div>
-                <div>864</div>
-                <div>5169</div>
+                <div class="km-rodados-ano"></div>
+                <div class="combustivel-ano"></div>
+                <div class="energia-ano"></div>
+                <div class="economia-ano"></div>
             </div>
             <div class="tbody">
                 <div>5 ANOS</div>
-                <div>51000</div>
-                <div></div>
-                <div></div>
-                <div></div>
+                <div class="km-rodados-5-anos"></div>
+                <div class="combustivel-5-anos"></div>
+                <div class="energia-5-anos"></div>
+                <div class="economia-5-anos"></div>
             </div>
     </div>
+    
+
+
+
     <div class="mensagem-resultado">
         <p>COMPARANDO UM HATCH COM O E-JS1 VOCÊ</br><span class="economia">ECONOMIZA 430,40 REAIS POR MÊS.</span></p>
     </div>
@@ -120,13 +124,13 @@
         TOTALIZANDO EM UMA ECONOMIA MENSAL DE <span class="manutencao-economia">553,70 REAIS!</span>
     </div>
     <div class="economia-5-anos">
-        <p>Ou seja, nessas condições, na divoca de m hatch térmico por um E-JS1 100% elétrico você economiza <span class="economia-total-5-anos">33221.07</span> reais num período de 5 anos!</p>
+        <p>Ou seja, nessas condições, na troca de um hatch térmico por um E-JS1 100% elétrico você economiza <span class="economia-total-5-anos">33221.07</span> reais num período de 5 anos!</p>
     </div>
 </section>
 
 </body>
 <footer>
-<script src="./js/range.js"></script>
+<!-- <script src="./js/range.js"></script> -->
 <script src="./js/calculadora.js"></script>
 
 </footer>

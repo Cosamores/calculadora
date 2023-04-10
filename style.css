@@ -82,16 +82,15 @@ h3 {
 .tempo-button:visited,
 .tempo-button:hover,
 .tempo-button:active {
-    
     text-decoration: none;
     color: inherit;
 }
 
 .nome-carro {
-    color: #1a3259;
+    color: inherit;
     font-weight: 900px;
-    border: transparent;
-    background-color: transparent;
+    border: none;
+    background-color: none;
     overflow: hidden;
 }
 
@@ -237,18 +236,19 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .resultados {
-    padding: 30px 0 30px 0;
+    padding: 10px 0 10px 0;
 }
 
 .resultados h2 {
     padding: 0;
     margin-bottom: 0;
+
 }
 .resultados .subtitle {
     margin-top: 0;
     color: #0d4395;
 }
-.e-js1:hover, .e-js4:hover, .e-j7:hover {
+#e-js1:hover, #e-js4:hover, #e-j7:hover {
     color: #0ca9e1;
     cursor: pointer;
 }
@@ -336,6 +336,9 @@ input[type="range"]::-webkit-slider-thumb {
     font-size: 20px;
 }
 
+.selected {
+    color:#0ca9e1;
+}
 
 
 @media screen and (max-width: 768px) and (min-width: 144px) {
@@ -423,6 +426,10 @@ input[type="range"]::-webkit-slider-thumb {
 
     .resultados {
         padding: 0 0 20px 0;
+    }
+    .resultados h2 {
+        font-size: 20px;
+        white-space: nowrap;
     }
 
     .tabela-resultados {

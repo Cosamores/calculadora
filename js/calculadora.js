@@ -90,21 +90,20 @@ Carro.defaultSelection =  function() {
 
 };
 
-const carrosTipo = document.querySelectorAll('.nome-carro');
-carrosTipo.forEach((e) => {
+const carros = document.querySelectorAll('.nome-carro');
+carros.forEach((e) => {
   e.addEventListener('click', (e) => {
-    nomeCarro =  (e.target.alt || e.target.innerText).trim();
-
-    if (nomeCarro.toLowerCase() =='hatch') {
+    const carro = e.target.id;
+    const nomeCarro =  (e.target.alt || e.target.innerText || e.target.id).trim();
+    console.log(e)
+    if (nomeCarro.toLowerCase() =='hatch' || carro == 'e-js1') {
         Carro.nome = nomeCarro;
         Carro.manutencaoE = Number(manutencaoEl[0]);
         Carro.manutencaoG = Number(manutencaoGas[0]);
         Carro.consumoG = Number(consumoGas[0]);
-        
-        
     }
-    if (nomeCarro.toLowerCase() == 'sedan') {
-        Carro.nome = nomeCarro;
+    if (nomeCarro.toLowerCase() == 'sedan'  || carro == 'e-js4') {
+        Carro.nome = carro;
         Carro.manutencaoE = Number(manutencaoEl[2]); 
         Carro.consumoE = Number(consumoEl[2]);
         Carro.manutencaoG = Number(manutencaoGas[2]);
@@ -116,8 +115,8 @@ carrosTipo.forEach((e) => {
 
     };
     }
-    if (nomeCarro.toLowerCase() == 'suv') {
-        Carro.nome = nomeCarro;
+    if (nomeCarro.toLowerCase() == 'suv'|| carro == 'e-j7') {
+        Carro.nome = carro;
         Carro.manutencaoE = Number(manutencaoEl[1]);
         Carro.consumoE = Number(consumoEl[1]);
         Carro.manutencaoG = Number(manutencaoGas[1]);
@@ -133,6 +132,17 @@ carrosTipo.forEach((e) => {
   });
 });
 
+/*  
+carrosTabela.forEach((e) => {
+  e.addEventListener('click', (e) =>{
+  const carro = e.target.id;
+  carro == 'e-js1' ? console.log(carro) 
+    : carro == 'e-js4'?  console.log(carro) 
+    : carro == 'e-j7' ? console.log(carro)
+    : console.log('bugou')
+  })
+})
+ */
 function calculateResults() {
   if (!Carro.nome || !timeValue || !rangeValue || !gasValue) {
     Carro.defaultSelection = null;
@@ -192,5 +202,4 @@ function calculateResults() {
   document.querySelector('.manutencao-economia').textContent = economiaManutencao.toFixed(2);
   document.querySelector('.economia-total-5-anos').textContent = (economiaTotal * (5 * 365)).toFixed(2);
   }
-
-  setInterval(calculateResults(),500)
+setInterval(calculateResults(),500)

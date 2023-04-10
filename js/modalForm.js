@@ -18,19 +18,24 @@ let isMouseDown = false;
 let offsetX, offsetY;
 let lastMouseX;
 
-floatingButton.addEventListener('mousedown', (e) => {
+function handlePointerDown(e) {
   e.preventDefault();
   isMouseDown = true;
-  offsetX = floatingButton.offsetLeft - e.clientX;
-  offsetY = floatingButton.offsetTop - e.clientY;
-  lastMouseX = e.clientX;
-});
+  let clientX = e.clientX || e.touches[0].clientX;
+  let clientY = e.clientY || e.touches[0].clientY;
+  offsetX = floatingButton.offsetLeft - clientX;
+  offsetY = floatingButton.offsetTop - clientY;
+  lastMouseX = clientX;
+}
 
-document.addEventListener('mousemove', (e) => {
+function handlePointerMove(e) {
   if (!isMouseDown) return;
 
-  let newLeft = e.clientX + offsetX;
-  let newTop = e.clientY + offsetY;
+  let clientX = e.clientX || e.touches[0].clientX;
+  let clientY = e.clientY || e.touches[0].clientY;
+
+  let newLeft = clientX + offsetX;
+  let newTop = clientY + offsetY;
 
   // Limit the button's movement to the window's dimensions
   newLeft = Math.max(0, Math.min(window.innerWidth - floatingButton.offsetWidth, newLeft));
@@ -39,13 +44,20 @@ document.addEventListener('mousemove', (e) => {
   floatingButton.style.left = newLeft + 'px';
   floatingButton.style.top = newTop + 'px';
 
-  let dx = e.clientX - lastMouseX;
+  let dx = clientX - lastMouseX;
   let rotationDirection = dx > 0 ? 1 : -1;
   floatingButton.style.transform = `rotate(${rotationDirection * 180}deg)`;
 
-  lastMouseX = e.clientX;
-});
+  lastMouseX = clientX;
+}
 
-document.addEventListener('mouseup', () => {
+function handlePointerUp() {
   isMouseDown = false;
-});
+}
+
+floatingButton.addEventListener('mousedown', handlePointerDown);
+floatingButton.addEventListener('touchstart', handlePointerDown);
+document.addEventListener('mousemove', handlePointerMove);
+document.addEventListener('touchmove', handlePointerMove);
+document.addEventListener('mouseup', handlePointerUp);
+document.addEventListener('touchend', handlePointerUp);

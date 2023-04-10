@@ -169,11 +169,7 @@ function calculateResults() {
   const economiaManutencao = custoManutencaoG - custoManutencaoE; 
   const economia = custoGasolinaG - custoEnergiaE;
   const economiaTotal = custoTotalG - custoTotalE; 
-  
-  console.log('economia: ' + economia, 'custo total Gas: ' + custoTotalG, 'custo total Eletrico: ' +  custoTotalE);
-  console.log( 'custo total Gas: ' + custoTotalG);
-  console.log('custo total Eletrico: ' +  custoTotalE);
-  console.log(  document.querySelector('.economia-dia').textContent)
+
 
   document.querySelector('.km-rodados-dia').textContent = kmRodadosE.toFixed(2);
   document.querySelector('.combustivel-dia').textContent = custoGasolinaG.toFixed(2);

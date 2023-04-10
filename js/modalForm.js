@@ -81,9 +81,7 @@ function toggleModal() {
 }
 
 
-floatingButton.addEventListener('click', toggleModal);
 floatingButton.addEventListener('touchend', (e) => {
   if (!isMouseDown) return;
   toggleModal();
-  e.preventDefault();
 });

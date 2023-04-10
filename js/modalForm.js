@@ -28,8 +28,16 @@ floatingButton.addEventListener('mousedown', (e) => {
 
 document.addEventListener('mousemove', (e) => {
   if (!isMouseDown) return;
-  floatingButton.style.left = e.clientX + offsetX + 'px';
-  floatingButton.style.top = e.clientY + offsetY + 'px';
+
+  let newLeft = e.clientX + offsetX;
+  let newTop = e.clientY + offsetY;
+
+  // Limit the button's movement to the window's dimensions
+  newLeft = Math.max(0, Math.min(window.innerWidth - floatingButton.offsetWidth, newLeft));
+  newTop = Math.max(0, Math.min(window.innerHeight - floatingButton.offsetHeight, newTop));
+
+  floatingButton.style.left = newLeft + 'px';
+  floatingButton.style.top = newTop + 'px';
 
   let dx = e.clientX - lastMouseX;
   let rotationDirection = dx > 0 ? 1 : -1;

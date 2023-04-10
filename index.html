@@ -20,7 +20,7 @@
     <secti  on class="dia-mes-ano">
         <div class="select-tempo">
             <div class="tempo-selector">
-                <h3>Quantos km você roda por <span class="tempo"></span></h3>
+                <h3>Quantos km você roda no <span class="tempo"></span></h3>
                 <div class="tempo-buttons">
                     <button class="tempo-button" id="1" value="dia">DIA</button>
                     <button class="tempo-button" id="30" value="mês">MÊS</button>
@@ -69,11 +69,13 @@
     </section>
     
     <section class="resultados">
-    <h2>RESULTADOS PARA O <span id="e-js1" class="nome-carro carro">E-JS1 </span> <span id="e-js4" class="nome-carro carro">E-JS4</span> <span id="e-j7" class="nome-carro">E-J7</span></h2>
-    <p class="subtitle">(clique no modelo desejado)</p>
+        <div>
+            <h2>RESULTADOS PARA O <span id="e-js1" class="nome-carro carro">E-JS1 </span> <span id="e-js4" class="nome-carro carro">E-JS4</span> <span id="e-j7" class="nome-carro">E-J7</span></h2>
+            <p class="subtitle">(clique no modelo desejado)</p>
+        </div>    
         <div class="tabela-resultados">
             <div class="thead">
-                <div ><!-- EM BRANCO --></div>
+                <div id="quina-da-tabela"></div>
                 <div>VOCÊ RODA (KM)</div>
                 <div>COMBUSTÍVEL (R$)</div>
                 <div>ENERGIA ELÉTRICA (R$)</div>

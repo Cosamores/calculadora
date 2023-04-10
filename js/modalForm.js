@@ -14,6 +14,19 @@ closeModal.addEventListener('click', () => {
   }, 300);
 });
 
+floatingButton.addEventListener('touched', () => {
+  modal.classList.add('open');
+});
+
+closeModal.addEventListener('touched', () => {
+  modal.classList.add('closing');
+  setTimeout(() => {
+    modal.classList.remove('open');
+    modal.classList.remove('closing');
+  }, 300);
+});
+
+
 let isMouseDown = false;
 let offsetX, offsetY;
 let lastMouseX;
@@ -64,12 +77,12 @@ document.addEventListener('touchend', handlePointerUp);
 
 function toggleModal() {
   const modal = document.getElementById('modal');
-  modal.classList.toggle('show');
+  modal.classList.toggle('open');
 }
+
 
 floatingButton.addEventListener('click', toggleModal);
 floatingButton.addEventListener('touchend', (e) => {
-  // Verificar se o evento de toque foi disparado após arrastar o botão
   if (!isMouseDown) return;
   toggleModal();
   e.preventDefault();

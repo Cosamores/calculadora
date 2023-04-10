@@ -61,3 +61,16 @@ document.addEventListener('mousemove', handlePointerMove);
 document.addEventListener('touchmove', handlePointerMove);
 document.addEventListener('mouseup', handlePointerUp);
 document.addEventListener('touchend', handlePointerUp);
+
+function toggleModal() {
+  const modal = document.getElementById('modal');
+  modal.classList.toggle('show');
+}
+
+floatingButton.addEventListener('click', toggleModal);
+floatingButton.addEventListener('touchend', (e) => {
+  // Verificar se o evento de toque foi disparado após arrastar o botão
+  if (!isMouseDown) return;
+  toggleModal();
+  e.preventDefault();
+});

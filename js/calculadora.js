@@ -204,9 +204,9 @@ const calculateResults = () => {
   document.querySelector('.economia-dia').textContent = economia.toFixed(2);
 
   document.querySelector('.km-rodados-mes').textContent = (kmRodadosE * 30).toFixed(2);
-  document.querySelector('.combustivel-mes').textContent = (custoGasolinaG * 30).toFixed(2);
-  document.querySelector('.energia-mes').textContent = (custoEnergiaE * 30).toFixed(2);
-  document.querySelector('.economia-mes').textContent = (economia * 30).toFixed(2);
+  document.querySelector('.combustivel-mes').textContent = `R$ ${(custoGasolinaG * 30).toFixed(2)}`;
+  document.querySelector('.energia-mes').textContent = `R$ ${(custoEnergiaE * 30).toFixed(2)}`;
+  document.querySelector('.economia-mes').textContent = `R$ ${(economia * 30).toFixed(2)}`;
 
   document.querySelector('.km-rodados-ano').textContent = (kmRodadosE * 365).toFixed(2);
   document.querySelector('.combustivel-ano').textContent = (custoGasolinaG * 365).toFixed(2);
@@ -215,14 +215,14 @@ const calculateResults = () => {
 
   document.querySelector('.km-rodados-5-anos').textContent = (kmRodadosE * (5 * 365)).toFixed(2);
   document.querySelector('.combustivel-5-anos').textContent = (custoGasolinaG * (5 * 365)).toFixed(2);
-  document.querySelector('.energia-5-anos').textContent = (custoEnergiaE * (5 * 365)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  document.querySelector('.energia-5-anos').textContent = (custoEnergiaE * (5 * 365)).toFixed(2);
   document.querySelector('.economia-5-anos').textContent = (economia * (5 * 365)).toFixed(2);
   
-  document.querySelector('.economia').textContent = `ECONOMIZA ${(timeValue * economiaTotal).toFixed(2)} REAIS `;
-  document.querySelector('.emissao').textContent = emissao.toFixed(2);
-  document.querySelector('.termico').textContent = (timeValue * custoManutencaoG).toFixed(2);
-  document.querySelector('.eletrico').textContent = (timeValue * custoManutencaoE).toFixed(2);
-  document.querySelector('.manutencao-economia').textContent = (30 * economiaManutencao).toFixed(2);
-  document.querySelector('.economia-total-5-anos').textContent = (economiaTotal * (5 * 365)).toFixed(2);
+  document.querySelector('.economia').textContent = `ECONOMIZA ${(timeValue * economiaTotal).toFixed(2)} REAIS`;
+  document.querySelector('.emissao').textContent = emissao.toFixed(1);
+  document.querySelector('.termico').textContent = (timeValue * custoManutencaoG).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  document.querySelector('.eletrico').textContent = (timeValue * custoManutencaoE).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  document.querySelector('.manutencao-economia').textContent = (30 * economiaManutencao).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  document.querySelector('.economia-total-5-anos').textContent = (economiaTotal * (5 * 365)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 setInterval(calculateResults(),500)

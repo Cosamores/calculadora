@@ -20,7 +20,7 @@
     <secti  on class="dia-mes-ano">
         <div class="select-tempo">
             <div class="tempo-selector">
-                <h3>Quantos km você roda no <span class="tempo"></span></h3>
+                <h3>Quantos quilômetros (km) você percorre por: <span class="tempo"></span></h3>
                 <div class="tempo-buttons">
                     <button class="tempo-button" id="1" value="dia">DIA</button>
                     <button class="tempo-button" id="30" value="mês">MÊS</button>
@@ -38,11 +38,11 @@
     <!-- Seletor de tipo de veículo -->
 
     <section class="veiculo-tipo">
-        <h3>Qual veículo você gostaria de comparar</h3>
+        <h3>Qual modelo de veículo você deseja comprar?</h3>
         <div class="tipo-seletor">
             <div class="tipo hatch">
                 <button class="nome-carro hatch" value="hatch">
-                <img src="./images/e-js1_lateral.jpeg" alt="hatch"></br>
+                <img src="./images/ejs1_celeste.png" alt="hatch"></br>
                 HATCH</button>
             </div>
             <div class="tipo suv">
@@ -70,7 +70,7 @@
     
     <section class="resultados">
         <div>
-            <h2>RESULTADOS PARA O <span id="e-js1" class="nome-carro carro">E-JS1 </span> <span id="e-js4" class="nome-carro carro">E-JS4</span> <span id="e-j7" class="nome-carro">E-J7</span></h2>
+            <h2>RESULTADOS PARA O <span value="e-js1" class="nome-carro carro">E-JS1 </span> <span value="e-js4" class="nome-carro carro">E-JS4</span> <span value="e-j7" class="nome-carro">E-J7</span></h2>
             <p class="subtitle">(clique no modelo desejado)</p>
         </div>    
         <div class="tabela-resultados">
@@ -112,25 +112,22 @@
             </div>
     </div>
     
-
-
-
     <div class="mensagem-resultado">
-        <p>COMPARANDO UM HATCH COM O E-JS1 VOCÊ</br><span class="economia">ECONOMIZA: ????</span></p>
+        <p>COMPARANDO UM <span class="carro-tipo">HATCH</span> COM O <span class="carro-nome">E-JS1</span> VOCÊ</br><span class="economia">ECONOMIZA: ????</span></p>
     </div>
     <div class="mensagem-emissao">
         <p>Além de não emitir <span class="emissao">muitas</span> toneladas de CO2 na atmosfera, </br>dirigir sem vibrações, com aceleração instantânea e contínua!</p>
     </div>
     <div class="manutencao-main">
         <h2>VEJA TAMBÉM AS DIFERENÇAS EM </br> MANUTENÇAO PARA AS DUAS TECNOLOGIAS:</h2>
-        <p class="manutencao-termico"> HATCH TÉRMICO: <span class="termico">Veja a diferença</p>
-        <P class="manutencao-eletrico"> E-JS1 100% ELÉTRICO: <span class="eletrico">Utilize nossa calculadora!</span></P>
+        <p class="manutencao-termico"> <span class="carro-tipo">HATCH</span> TÉRMICO: <span class="termico">Veja a diferença</p>
+        <P class="manutencao-eletrico"><span class="carro-nome">E-JS1</span> 100% ELÉTRICO: <span class="eletrico">Utilize nossa calculadora!</span></P>
     </div>
     <div class="totalizando">
-        TOTALIZANDO EM UMA ECONOMIA MENSAL DE <span class="manutencao-economia">553,70 REAIS!</span>
+        TOTALIZANDO EM UMA ECONOMIA MENSAL DE <span class="manutencao-economia">muitos reais!</span>
     </div>
     <div class="economia-5-anos">
-        <p>Ou seja, nessas condições, na troca de um hatch térmico por um E-JS1 100% elétrico você economiza <span class="economia-total-5-anos">33221.07</span> reais num período de 5 anos!</p>
+        <p>Ou seja, nessas condições, na troca de um <span class="carro-tipo">hatch</span> térmico por um <span class="carro-nome">E-JS1</span> 100% elétrico você economiza <span class="economia-total-5-anos">muitos</span> reais num período de 5 anos!</p>
     </div>
 </section>
 <div class="modal-experience">
@@ -140,7 +137,6 @@
     <span class="close">&times;</span>
     <h3>Formulário</h3>
     <form>
-      <!-- Adicione os campos do formulário aqui -->
       <label for="nome">Nome:</label>
       <input type="text" id="nome" name="nome">
     

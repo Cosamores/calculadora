@@ -2,32 +2,34 @@ const floatingButton = document.querySelector('#floating-button');
 const modal = document.querySelector('#modal');
 const closeModal = document.querySelector('.close');
 
-floatingButton.addEventListener('click', () => {
-  modal.classList.add('open');
+function toggleModal() {
+  if (isButtonDragged) {
+    isButtonDragged = false;
+    return;
+  }
+  
+  if (modal.classList.contains('open')) {
+    modal.classList.add('closing');
+    setTimeout(() => {
+      modal.classList.remove('open');
+      modal.classList.remove('closing');
+    }, 300);
+  } else {
+    modal.classList.add('open');
+  }
+}
+
+floatingButton.addEventListener('click', toggleModal);
+floatingButton.addEventListener('touchend', (e) => {
+  if (!isMouseDown) return;
+  toggleModal();
+  e.preventDefault();
 });
 
-closeModal.addEventListener('click', () => {
-  modal.classList.add('closing');
-  setTimeout(() => {
-    modal.classList.remove('open');
-    modal.classList.remove('closing');
-  }, 300);
-});
-
-floatingButton.addEventListener('touched', () => {
-  modal.classList.add('open');
-});
-
-closeModal.addEventListener('touched', () => {
-  modal.classList.add('closing');
-  setTimeout(() => {
-    modal.classList.remove('open');
-    modal.classList.remove('closing');
-  }, 300);
-});
-
+closeModal.addEventListener('click', toggleModal);
 
 let isMouseDown = false;
+let isButtonDragged = false;
 let offsetX, offsetY;
 let lastMouseX;
 
@@ -40,12 +42,15 @@ function handlePointerDown(e) {
   offsetY = floatingButton.offsetTop - clientY;
   lastMouseX = clientX;
 }
-
 function handlePointerMove(e) {
   if (!isMouseDown) return;
 
-  let clientX = e.clientX || e.touches[0].clientX;
-  let clientY = e.clientY || e.touches[0].clientY;
+  let clientX = e.clientX || (e.touches && e.touches[0]?.clientX);
+  let clientY = e.clientY || (e.touches && e.touches[0]?.clientY);
+
+  if (!clientX || !clientY) return;
+
+  isButtonDragged = true;
 
   let newLeft = clientX + offsetX;
   let newTop = clientY + offsetY;
@@ -64,6 +69,7 @@ function handlePointerMove(e) {
   lastMouseX = clientX;
 }
 
+
 function handlePointerUp() {
   isMouseDown = false;
 }
@@ -74,15 +80,3 @@ document.addEventListener('mousemove', handlePointerMove);
 document.addEventListener('touchmove', handlePointerMove);
 document.addEventListener('mouseup', handlePointerUp);
 document.addEventListener('touchend', handlePointerUp);
-
-function toggleModal() {
-  const modal = document.getElementById('modal');
-  modal.classList.toggle('open');
-}
-
-
-floatingButton.addEventListener('touchend', (e) => {
-  if (!isMouseDown) return;
-  toggleModal();
-  e.preventDefault();
-});

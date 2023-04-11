@@ -78,7 +78,8 @@ const precoEnergia = 0.85;
 const Carro = {
 };
 
-Carro.nome = 'hatch';
+Carro.nome = 'E-JS1'
+Carro.modelo = 'hatch';
 Carro.consumoE = Number(consumoEl[0]);
 Carro.manutencaoE = Number(manutencaoEl[0]);
 Carro.manutencaoG = Number(manutencaoGas[0]);
@@ -93,17 +94,25 @@ Carro.defaultSelection =  function() {
 const carros = document.querySelectorAll('.nome-carro');
 carros.forEach((e) => {
   e.addEventListener('click', (e) => {
-    const carro = e.target.id;
-    const nomeCarro =  (e.target.alt || e.target.innerText || e.target.id).trim();
-    console.log(e)
-    if (nomeCarro.toLowerCase() =='hatch' || carro == 'e-js1') {
-        Carro.nome = nomeCarro;
+    const carro =  (e.target.alt || e.target.innerText || e.target.value || e.textContent).trim().toUpperCase();
+    if (carro =='HATCH' || carro == 'E-JS1') {
+        Carro.nome = 'E-JS1'
+        Carro.modelo = 'HATCH';
         Carro.manutencaoE = Number(manutencaoEl[0]);
         Carro.manutencaoG = Number(manutencaoGas[0]);
         Carro.consumoG = Number(consumoGas[0]);
+        Carro.defaultSelection =  function() {
+          document.querySelector('.nome-carro.hatch').classList.add('active');
+          document.querySelector('.nome-carro.suv').classList.remove('active');
+          document.querySelector('.nome-carro.sedan').classList.remove('active');
+      };
+      changeCarName(carroNome);
+      changeCarModel(carroTipo);    
+      calculateResults();    
     }
-    if (nomeCarro.toLowerCase() == 'sedan'  || carro == 'e-js4') {
-        Carro.nome = carro;
+    if (carro == 'SEDAN'  || carro == 'E-JS4') {
+        Carro.nome = 'E-JS4'
+        Carro.modelo = 'SEDAN';
         Carro.manutencaoE = Number(manutencaoEl[2]); 
         Carro.consumoE = Number(consumoEl[2]);
         Carro.manutencaoG = Number(manutencaoGas[2]);
@@ -114,9 +123,13 @@ carros.forEach((e) => {
             document.querySelector('.nome-carro.sedan').classList.add('active');
 
     };
+    changeCarName(carroNome);
+    changeCarModel(carroTipo);
+    calculateResults();
     }
-    if (nomeCarro.toLowerCase() == 'suv'|| carro == 'e-j7') {
-        Carro.nome = carro;
+    if (carro == 'SUV'|| carro == 'E-J7') {
+        Carro.nome = 'E-J7'
+        Carro.modelo = 'SUV';
         Carro.manutencaoE = Number(manutencaoEl[1]);
         Carro.consumoE = Number(consumoEl[1]);
         Carro.manutencaoG = Number(manutencaoGas[1]);
@@ -124,31 +137,35 @@ carros.forEach((e) => {
         Carro.defaultSelection =  function() {
             document.querySelector('.nome-carro.hatch').classList.remove('active');
             document.querySelector('.nome-carro.sedan').classList.remove('active');
-            document.querySelector('.nome-carro.suv').classList.add('active');
-
-    };
-    }
-            calculateResults();
-  });
+            document.querySelector('.nome-carro.suv').classList.add('active');    
+          };
+        changeCarName(carroNome);
+        changeCarModel(carroTipo);
+        calculateResults();
+        }
+        calculateResults();    
+     });
 });
 
-/*  
-carrosTabela.forEach((e) => {
-  e.addEventListener('click', (e) =>{
-  const carro = e.target.id;
-  carro == 'e-js1' ? console.log(carro) 
-    : carro == 'e-js4'?  console.log(carro) 
-    : carro == 'e-j7' ? console.log(carro)
-    : console.log('bugou')
+const carroTipo = document.querySelectorAll('.carro-tipo');
+const carroNome = document.querySelectorAll('.carro-nome');
+const changeCarName =(e)=> {
+  e.forEach((e) => {
+    e.textContent = Carro.nome; 
   })
+}
+
+const changeCarModel =   (e) => {
+e.forEach((e) => {
+  e.textContent = Carro.modelo; 
 })
- */
-function calculateResults() {
-  if (!Carro.nome || !timeValue || !rangeValue || !gasValue) {
+}
+
+const calculateResults = () => {
+  if (!Carro.modelo || !timeValue || !rangeValue || !gasValue) {
     Carro.defaultSelection = null;
     return;
   }
-
 
   // Cálculos para o modelo elétrico
   const kmRodadosE = rangeValue / timeValue;
@@ -169,6 +186,8 @@ function calculateResults() {
   const economiaManutencao = custoManutencaoG - custoManutencaoE; 
   const economia = custoGasolinaG - custoEnergiaE;
   const economiaTotal = custoTotalG - custoTotalE; 
+
+
 
 
   document.querySelector('.km-rodados-dia').textContent = kmRodadosE.toFixed(2);
@@ -197,5 +216,5 @@ function calculateResults() {
   document.querySelector('.eletrico').textContent = custoManutencaoE.toFixed(2);
   document.querySelector('.manutencao-economia').textContent = economiaManutencao.toFixed(2);
   document.querySelector('.economia-total-5-anos').textContent = (economiaTotal * (5 * 365)).toFixed(2);
-  }
+}
 setInterval(calculateResults(),500)

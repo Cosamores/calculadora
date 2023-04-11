@@ -48,14 +48,17 @@ positionBubble();
 positionGasBubble();
 
 const timeList = document.querySelectorAll('.tempo-button');
+const tempoEconomia = document.querySelector('.tempo-economia')
 timeList.forEach((e) => {
   e.addEventListener('click', (e) => {
     timeKm = document.querySelector('.tempo');
     timeKm.innerText = e.target.innerText.toLowerCase();
     timeValue = Number(e.target.id);
+    tempoEconomia.textContent = ` POR ${timeKm.innerText}`.toUpperCase(); 
     calculateResults();
   });
 });
+
 
 rangeInput.addEventListener('input', () => {
   positionBubble();
@@ -169,7 +172,8 @@ const calculateResults = () => {
 
   // Cálculos para o modelo elétrico
   const kmRodadosE = rangeValue / timeValue;
-  const custoEnergiaE = ( kmRodadosE  / Carro.consumoE) * precoEnergia;
+  const litrosE = kmRodadosE  / Carro.consumoE
+  const custoEnergiaE = litrosE * precoEnergia;
   const custoManutencaoE = kmRodadosE * Carro.manutencaoE;
   const custoTotalE = custoEnergiaE + custoManutencaoE;
   
@@ -177,10 +181,14 @@ const calculateResults = () => {
 
   
   const kmRodadosG = rangeValue / timeValue;
-  const custoGasolinaG = (kmRodadosG / Carro.consumoG) *  gasValue;
+  const litrosG = kmRodadosG / Carro.consumoG;
+  const custoGasolinaG = litrosG *  gasValue;
   const custoManutencaoG = kmRodadosG * Carro.manutencaoG;
   const custoTotalG = custoGasolinaG + custoManutencaoG;
-  const emissao = (custoGasolinaG * 2.3) - (custoEnergiaE * 0.5); // Apenas um exemplo, você deve usar os valores corretos
+ 
+  const emissaoG = kmRodadosG * 2.31;
+  const emissaoE = kmRodadosE * 0.5;
+  const emissao = (emissaoG - emissaoE) / 1000 * timeValue;
 
   // Diferença entre os dois modelos
   const economiaManutencao = custoManutencaoG - custoManutencaoE; 
@@ -207,14 +215,14 @@ const calculateResults = () => {
 
   document.querySelector('.km-rodados-5-anos').textContent = (kmRodadosE * (5 * 365)).toFixed(2);
   document.querySelector('.combustivel-5-anos').textContent = (custoGasolinaG * (5 * 365)).toFixed(2);
-  document.querySelector('.energia-5-anos').textContent = (custoEnergiaE * (5 * 365)).toFixed(2);
+  document.querySelector('.energia-5-anos').textContent = (custoEnergiaE * (5 * 365)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   document.querySelector('.economia-5-anos').textContent = (economia * (5 * 365)).toFixed(2);
   
-  document.querySelector('.economia').textContent = `ECONOMIZA ${economiaTotal.toFixed(2)} REAIS POR MÊS.`;
+  document.querySelector('.economia').textContent = `ECONOMIZA ${(timeValue * economiaTotal).toFixed(2)} REAIS `;
   document.querySelector('.emissao').textContent = emissao.toFixed(2);
-  document.querySelector('.termico').textContent = custoManutencaoG.toFixed(2);
-  document.querySelector('.eletrico').textContent = custoManutencaoE.toFixed(2);
-  document.querySelector('.manutencao-economia').textContent = economiaManutencao.toFixed(2);
+  document.querySelector('.termico').textContent = (timeValue * custoManutencaoG).toFixed(2);
+  document.querySelector('.eletrico').textContent = (timeValue * custoManutencaoE).toFixed(2);
+  document.querySelector('.manutencao-economia').textContent = (30 * economiaManutencao).toFixed(2);
   document.querySelector('.economia-total-5-anos').textContent = (economiaTotal * (5 * 365)).toFixed(2);
 }
 setInterval(calculateResults(),500)

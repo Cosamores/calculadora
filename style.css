@@ -52,7 +52,7 @@ h3 {
     height: 180px;
     width: 100%;
     text-align: center;
-    margin: 0 auto; 
+    margin: 50px 0 0 0; 
 }
 
 .tempo-buttons {
@@ -95,18 +95,20 @@ h3 {
     border: none;
     background-color: transparent;
     overflow: hidden;
-
+    cursor:pointer;
 }
 
 .active {
     color: #0ca9e1;
     background-color: rgba(222, 184, 135, 0.276);
+    border-radius: 10%;
 }
 
 .nome-carro:active,
 .nome-carro:focus {
     color: #0ca9e1;
     background-color: rgba(222, 184, 135, 0.276);
+    border-radius: 10%;
 }
 
 .tempo-button:focus {
@@ -197,12 +199,21 @@ input[type="range"]::-webkit-slider-thumb {
     border: 4px solid #f2f2f2;
 
 }
+
+input[type=range].colored::-webkit-slider-runnable-track {
+  background: linear-gradient(to right, rgba(85, 182, 252, 1) 0%,  rgba(19,97,249,1) var(--perc), rgba(204, 204, 204, 1) var(--perc), rgba(204, 204, 204, 1) 100%);
+}
+
 .select-km {
-    height: 100px;}
+    height: 100px;
+    margin-left: 7px;
+    ;
+}
 .km-input, .gasolina-range {
     position: relative;
     padding-bottom: 50px;
     color: transparent
+    
 }
 
 .km-input .bubble, 

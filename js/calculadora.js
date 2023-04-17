@@ -5,11 +5,11 @@ const gasLabel = document.querySelector('.gasolina-range');
 const gasInput = gasLabel.children[0];
 
 const thumbWidth = 22;
-const thumbWidthG = 29;
+const thumbWidthG = 22;
 
-let timeValue = 0;
-let rangeValue = 0;
-let gasValue = 0;
+let timeValue;
+let defaultTimeValue = 30
+timeValue = defaultTimeValue;
 
 rangeLabel.insertAdjacentHTML(
   'beforeend',
@@ -28,37 +28,92 @@ function positionBubble() {
   const { min, max, value } = rangeInput;
   const total = Number(max) - Number(min);
   const perc = (Number(value) - Number(min)) / total;
-  const offset = (thumbWidth / 2) - (thumbWidth * 2 * perc);
 
-  rangeBubble.style.left = `calc(${perc * 100}% + ${offset}px)`;
+  const bubbleWidth = rangeBubble.clientWidth;
+  const rangeWidth = rangeInput.clientWidth;
+  const offset = (perc * rangeWidth) - (bubbleWidth * perc);
+
+  rangeBubble.style.left = `${offset + 10}px`;
   rangeBubble.textContent = value;
+
+  // Update the range input's background
+  rangeInput.style.setProperty('--perc', `${perc * 100}%`);
 }
 
 function positionGasBubble() {
   const { min, max, value } = gasInput;
   const total = Number(max) - Number(min);
   const perc = (Number(value) - Number(min)) / total;
-  const offset = (thumbWidthG / 2) - (thumbWidthG * 2 * perc);
 
-  gasBubble.style.left = `calc(${perc * 100}% + ${offset}px)`;
+  const bubbleWidth = gasBubble.clientWidth;
+  const rangeWidth = gasInput.clientWidth;
+  const offset = (perc * rangeWidth) - (bubbleWidth * perc);
+
+  gasBubble.style.left = `${offset + 100}px`;
   gasBubble.textContent = value;
+
+  gasInput.style.setProperty('--perc', `${perc * 100}%`);
 }
+
 
 positionBubble();
 positionGasBubble();
 
 const timeList = document.querySelectorAll('.tempo-button');
-const tempoEconomia = document.querySelector('.tempo-economia')
+const tempoEconomia = document.querySelector('.tempo-economia');
+const kmInput = document.querySelector('#km');
+
 timeList.forEach((e) => {
-  e.addEventListener('click', (e) => {
+  e.addEventListener('click', (event) => {
     timeKm = document.querySelector('.tempo');
-    timeKm.innerText = e.target.innerText.toLowerCase();
-    timeValue = Number(e.target.id);
-    tempoEconomia.textContent = ` POR ${timeKm.innerText}`.toUpperCase(); 
+/*     timeKm.innerText = event.target.innerText.toLowerCase();
+ */ timeValue = Number(event.target.id);
+    tempoEconomia.textContent = ` POR ${timeKm.innerText}`.toUpperCase();
+ 
+    let newMax;
+    let newDefaultValue;
+
+    if (timeValue === 1) {
+      newMax = Math.round(5000 / 30);
+      newDefaultValue = Math.round(2000 / 30);    
+      rangeValue = newDefaultValue
+  
+    } else if (timeValue === 365) {
+      newMax = 5000 * 12;
+      newDefaultValue = 2000 * 12;
+      rangeValue = newDefaultValue
+    } else {
+      newMax = 5000;
+      newDefaultValue = 2000;
+      rangeValue = newDefaultValue
+
+    }
+
+    kmInput.setAttribute('max', newMax);
+    kmInput.style.setProperty('--max', newMax);
+    kmInput.value = newDefaultValue;
+    gasBubble.textContent = newDefaultValue;
+
+    positionBubble();
+    positionGasBubble();
+
+    // Toggle active class for tempo buttons
+    timeList.forEach(button => button.classList.remove('active'));
+    event.target.classList.add('active');
     calculateResults();
+
   });
 });
 
+
+
+const carNames = document.querySelectorAll('.nome-carro');
+function toggleActiveClass(event) {
+  carNames.forEach(span => span.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+carNames.forEach(span => span.addEventListener('click', toggleActiveClass));
 
 rangeInput.addEventListener('input', () => {
   positionBubble();
@@ -71,6 +126,9 @@ gasInput.addEventListener('input', () => {
   gasValue = Number(gasBubble.textContent);
   calculateResults();
 });
+let defaultRangeValue = Number(rangeBubble.textContent);
+let defaultGasValue = Number(gasBubble.textContent);
+
 
 const consumoEl = [10.03, 7.64, 8.04];
 const consumoGas = [9.00, 7.80, 8.00];
@@ -83,9 +141,9 @@ const Carro = {
 
 Carro.nome = 'E-JS1'
 Carro.modelo = 'hatch';
-Carro.consumoE = Number(consumoEl[0]);
 Carro.manutencaoE = Number(manutencaoEl[0]);
 Carro.manutencaoG = Number(manutencaoGas[0]);
+Carro.consumoE = Number(consumoEl[0]);
 Carro.consumoG = Number(consumoGas[0]);
 Carro.defaultSelection =  function() {
     document.querySelector('.nome-carro.hatch').classList.add('active');
@@ -103,12 +161,9 @@ carros.forEach((e) => {
         Carro.modelo = 'HATCH';
         Carro.manutencaoE = Number(manutencaoEl[0]);
         Carro.manutencaoG = Number(manutencaoGas[0]);
+        Carro.consumoE = Number(consumoEl[0]);
         Carro.consumoG = Number(consumoGas[0]);
-        Carro.defaultSelection =  function() {
-          document.querySelector('.nome-carro.hatch').classList.add('active');
-          document.querySelector('.nome-carro.suv').classList.remove('active');
-          document.querySelector('.nome-carro.sedan').classList.remove('active');
-      };
+
       changeCarName(carroNome);
       changeCarModel(carroTipo);    
       calculateResults();    
@@ -120,12 +175,7 @@ carros.forEach((e) => {
         Carro.consumoE = Number(consumoEl[2]);
         Carro.manutencaoG = Number(manutencaoGas[2]);
         Carro.consumoG = Number(consumoGas[2]);
-        Carro.defaultSelection =  function() {
-            document.querySelector('.nome-carro.hatch').classList.remove('active');
-            document.querySelector('.nome-carro.suv').classList.remove('active');
-            document.querySelector('.nome-carro.sedan').classList.add('active');
 
-    };
     changeCarName(carroNome);
     changeCarModel(carroTipo);
     calculateResults();
@@ -137,11 +187,7 @@ carros.forEach((e) => {
         Carro.consumoE = Number(consumoEl[1]);
         Carro.manutencaoG = Number(manutencaoGas[1]);
         Carro.consumoG = Number(consumoGas[1]);
-        Carro.defaultSelection =  function() {
-            document.querySelector('.nome-carro.hatch').classList.remove('active');
-            document.querySelector('.nome-carro.sedan').classList.remove('active');
-            document.querySelector('.nome-carro.suv').classList.add('active');    
-          };
+
         changeCarName(carroNome);
         changeCarModel(carroTipo);
         calculateResults();
@@ -164,12 +210,17 @@ e.forEach((e) => {
 })
 }
 
+rangeValue = defaultRangeValue;
+gasValue = defaultGasValue;
+
+
 const calculateResults = () => {
   if (!Carro.modelo || !timeValue || !rangeValue || !gasValue) {
     Carro.defaultSelection = null;
     return;
   }
 
+  
   // Cálculos para o modelo elétrico
   const kmRodadosE = rangeValue / timeValue;
   const litrosE = kmRodadosE  / Carro.consumoE
@@ -204,9 +255,9 @@ const calculateResults = () => {
   document.querySelector('.economia-dia').textContent = economia.toFixed(2);
 
   document.querySelector('.km-rodados-mes').textContent = (kmRodadosE * 30).toFixed(2);
-  document.querySelector('.combustivel-mes').textContent = `R$ ${(custoGasolinaG * 30).toFixed(2)}`;
-  document.querySelector('.energia-mes').textContent = `R$ ${(custoEnergiaE * 30).toFixed(2)}`;
-  document.querySelector('.economia-mes').textContent = `R$ ${(economia * 30).toFixed(2)}`;
+  document.querySelector('.combustivel-mes').textContent = `${(custoGasolinaG * 30).toFixed(2)}`;
+  document.querySelector('.energia-mes').textContent = `${(custoEnergiaE * 30).toFixed(2)}`;
+  document.querySelector('.economia-mes').textContent = `${(economia * 30).toFixed(2)}`;
 
   document.querySelector('.km-rodados-ano').textContent = (kmRodadosE * 365).toFixed(2);
   document.querySelector('.combustivel-ano').textContent = (custoGasolinaG * 365).toFixed(2);
@@ -225,4 +276,4 @@ const calculateResults = () => {
   document.querySelector('.manutencao-economia').textContent = (30 * economiaManutencao).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   document.querySelector('.economia-total-5-anos').textContent = (economiaTotal * (5 * 365)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
-setInterval(calculateResults(),500)
+(calculateResults())

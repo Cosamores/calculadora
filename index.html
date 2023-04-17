@@ -17,28 +17,28 @@
 
     <!-- Seletor de KM -->
 
-    <secti  on class="dia-mes-ano">
+    <section class="dia-mes-ano">
         <div class="select-tempo">
             <div class="tempo-selector">
                 <h3>Quantos quilômetros (km) você percorre por: <span class="tempo"></span></h3>
                 <div class="tempo-buttons">
                     <button class="tempo-button" id="1" value="dia">DIA</button>
-                    <button class="tempo-button" id="30" value="mês">MÊS</button>
+                    <button class="tempo-button active" id="30" value="mês">MÊS</button>
                     <button class="tempo-button" id="365" value="ano">ANO</button>
                 </div>
             </div>
             <div class="select-km">
             <label for="km" class="km-input">
-                <input type="range" id="km" name="km-range" min="0" max="5000" step="1" value="0">
+                <input class="colored" type="range" id="km" name="km-range" min="0" max="5000" step="1" value="2000">
             </label>
             </div>
         </div>
     </section>
 
     <!-- Seletor de tipo de veículo -->
-
+<!--
     <section class="veiculo-tipo">
-        <h3>Qual modelo de veículo você deseja comprar?</h3>
+        <h3>Qual modelo de veículo térmico você deseja comparar?</h3>
         <div class="tipo-seletor">
             <div class="tipo hatch">
                 <button class="nome-carro hatch" value="hatch">
@@ -58,19 +58,19 @@
             </div>
         </div>
     </section>
-
+-->
     <!-- Seletor de preço de gasolina -->
 
     <section class="gasolina-preco">
         <h3>Quanto você paga na gasolina?</h3>
         <label for="gas" class="gasolina-range">
-            <input type="range" id="gas" name="gas-range" min="4.50" max="10.00" step="0.05" value="0">
+            <input class="colored" type="range" id="gas" name="gas-range" min="4.50" max="10.00" step="0.05" value="5.70">
         </label>
     </section>
     
     <section class="resultados">
         <div>
-            <h2>RESULTADOS PARA O <span value="e-js1" class="nome-carro carro">E-JS1 </span> <span value="e-js4" class="nome-carro carro">E-JS4</span> <span value="e-j7" class="nome-carro">E-J7</span></h2>
+            <h2>RESULTADOS PARA O <span value="e-js1" class="nome-carro carro active">E-JS1</span> <span value="e-js4" class="nome-carro carro">E-JS4</span> <span value="e-j7" class="nome-carro">E-J7</span></h2>
             <p class="subtitle">(clique no modelo desejado)</p>
         </div>    
         <div class="tabela-resultados">

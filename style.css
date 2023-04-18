@@ -611,6 +611,7 @@ input[type=range].colored::-webkit-slider-runnable-track {
     .thead {
         height: inherit;
         font-size: 9px;
+        width: 140%;
     }
     .tbody div {
         font-size: 12px;

@@ -13,14 +13,20 @@ html {
 
 header {
     height: 370px;
-    background-image: url("./images/header.jpeg");
+    background-image: url("./images/cover1.png");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:cover;
     display: flex;
     justify-content: center;
     text-align: center;
     padding: 0;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header img {
+    top: -600px;
 }
 
 section {

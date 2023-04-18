@@ -333,7 +333,7 @@ input[type=range].colored::-webkit-slider-runnable-track {
 
 
 .mensagem-resultado, .totalizando {
-    padding: 0px 0 30px 0;
+    padding: 0px 0 0px 0;
     font-size: 20px;
     color: #0d4395;
 }

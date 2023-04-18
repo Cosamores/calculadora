@@ -332,11 +332,14 @@ input[type=range].colored::-webkit-slider-runnable-track {
 
 
 .mensagem-resultado, .totalizando {
-    padding: 20px 0 30px 0;
-    font-size: 26px;
+    padding: 0px 0 30px 0;
+    font-size: 20px;
     color: #0d4395;
 }
 
+.manutencao-economia {
+    font-size: 24px;
+}
 .mensagem-resultado p, .totalizando p {
     font-family: 'Barlow-SemiBold 2', tahoma;
     padding-top: 0;

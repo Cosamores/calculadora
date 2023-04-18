@@ -168,25 +168,25 @@ carros.forEach((e) => {
       changeCarModel(carroTipo);    
       calculateResults();    
     }
-    if (carro == 'SEDAN'  || carro == 'E-JS4') {
+    if (carro == 'E-JS4') {
         Carro.nome = 'E-JS4'
-        Carro.modelo = 'SEDAN';
-        Carro.manutencaoE = Number(manutencaoEl[2]); 
-        Carro.consumoE = Number(consumoEl[2]);
-        Carro.manutencaoG = Number(manutencaoGas[2]);
-        Carro.consumoG = Number(consumoGas[2]);
+        Carro.modelo = 'SUV';
+        Carro.manutencaoE = Number(manutencaoEl[1]); 
+        Carro.consumoE = Number(consumoEl[1]);
+        Carro.manutencaoG = Number(manutencaoGas[1]);
+        Carro.consumoG = Number(consumoGas[1]);
 
     changeCarName(carroNome);
     changeCarModel(carroTipo);
     calculateResults();
     }
-    if (carro == 'SUV'|| carro == 'E-J7') {
+    if (carro == 'E-J7') {
         Carro.nome = 'E-J7'
-        Carro.modelo = 'SUV';
-        Carro.manutencaoE = Number(manutencaoEl[1]);
-        Carro.consumoE = Number(consumoEl[1]);
-        Carro.manutencaoG = Number(manutencaoGas[1]);
-        Carro.consumoG = Number(consumoGas[1]);
+        Carro.modelo = 'SEDAN';
+        Carro.manutencaoE = Number(manutencaoEl[2]);
+        Carro.consumoE = Number(consumoEl[2]);
+        Carro.manutencaoG = Number(manutencaoGas[2]);
+        Carro.consumoG = Number(consumoGas[2]);
 
         changeCarName(carroNome);
         changeCarModel(carroTipo);

@@ -356,7 +356,10 @@ input[type=range].colored::-webkit-slider-runnable-track {
     color: #0d4395;
     font-size: 20px;
 }
-
+.economia-total-5-anos {
+    font-size: 22px;
+    font-weight: 600;
+}
 
 .selected {
     color:#0ca9e1;

@@ -84,13 +84,13 @@ timeList.forEach((e) => {
       newMax = 5000 * 12;
       newDefaultValue = 2000 * 12;
       rangeValue = newDefaultValue;
-      tempoEconomia.textContent = ` POR MÊS.`
+      tempoEconomia.textContent = ` POR ANO.`
 
     } else {
       newMax = 5000;
       newDefaultValue = 2000;
       rangeValue = newDefaultValue;
-      tempoEconomia.textContent = ` POR ANO.`
+      tempoEconomia.textContent = ` POR MÊS.`
 
     }
 
@@ -254,27 +254,27 @@ const calculateResults = () => {
 
 
 
-  document.querySelector('.km-rodados-dia').textContent = kmRodadosE.toFixed(2);
-  document.querySelector('.combustivel-dia').textContent = custoGasolinaG.toFixed(2);
-  document.querySelector('.energia-dia').textContent = custoEnergiaE.toFixed(2);
-  document.querySelector('.economia-dia').textContent = economia.toFixed(2);
+  document.querySelector('.km-rodados-dia').textContent = kmRodadosE.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '');
+  document.querySelector('.combustivel-dia').textContent = custoGasolinaG.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '');
+  document.querySelector('.energia-dia').textContent = custoEnergiaE.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '');
+  document.querySelector('.economia-dia').textContent = economia.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '');;
 
-  document.querySelector('.km-rodados-mes').textContent = (kmRodadosE * 30).toFixed(2);
-  document.querySelector('.combustivel-mes').textContent = `${(custoGasolinaG * 30).toFixed(2)}`;
-  document.querySelector('.energia-mes').textContent = `${(custoEnergiaE * 30).toFixed(2)}`;
-  document.querySelector('.economia-mes').textContent = `${(economia * 30).toFixed(2)}`;
+  document.querySelector('.km-rodados-mes').textContent = (kmRodadosE * 30).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '');
+  document.querySelector('.combustivel-mes').textContent = `${(custoGasolinaG * 30).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '')}`;
+  document.querySelector('.energia-mes').textContent = (custoEnergiaE * 30).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '');
+  document.querySelector('.economia-mes').textContent = `${(economia * 30).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '')}`;
 
-  document.querySelector('.km-rodados-ano').textContent = (kmRodadosE * 365).toFixed(2);
-  document.querySelector('.combustivel-ano').textContent = (custoGasolinaG * 365).toFixed(2);
-  document.querySelector('.energia-ano').textContent = (custoEnergiaE * 365).toFixed(2);
-  document.querySelector('.economia-ano').textContent = (economia * 365).toFixed(2);
+  document.querySelector('.km-rodados-ano').textContent = (kmRodadosE * 365).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '');
+  document.querySelector('.combustivel-ano').textContent = (custoGasolinaG * 365).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '');
+  document.querySelector('.energia-ano').textContent = (custoEnergiaE * 365).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '');
+  document.querySelector('.economia-ano').textContent = (economia * 365).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '');
 
-  document.querySelector('.km-rodados-5-anos').textContent = (kmRodadosE * (5 * 365)).toFixed(2);
-  document.querySelector('.combustivel-5-anos').textContent = (custoGasolinaG * (5 * 365)).toFixed(2);
-  document.querySelector('.energia-5-anos').textContent = (custoEnergiaE * (5 * 365)).toFixed(2);
-  document.querySelector('.economia-5-anos').textContent = (economia * (5 * 365)).toFixed(2);
+  document.querySelector('.km-rodados-5-anos').textContent = (kmRodadosE * (5 * 365)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '');
+  document.querySelector('.combustivel-5-anos').textContent = (custoGasolinaG * (5 * 365)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '');
+  document.querySelector('.energia-5-anos').textContent = (custoEnergiaE * (5 * 365)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '');
+  document.querySelector('.economia-5-anos').textContent = (economia * (5 * 365)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '');
   
-  document.querySelector('.economia').textContent = `ECONOMIZA ${(timeValue * economiaTotal).toFixed(2)} REAIS`;
+  document.querySelector('.economia').textContent = `ECONOMIZA ${(timeValue * economiaTotal).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`;
   document.querySelector('.emissao').textContent = emissao.toFixed(1);
   document.querySelector('.termico').textContent = (timeValue * custoManutencaoG).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   document.querySelector('.eletrico').textContent = (timeValue * custoManutencaoE).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });

@@ -623,4 +623,8 @@ input[type=range].colored::-webkit-slider-runnable-track {
         white-space: pre-wrap;
         
     }
+    .mensagem-emissao {
+        text-align: justify;
+        padding: 10px;
+    }
 }

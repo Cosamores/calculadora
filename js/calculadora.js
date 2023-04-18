@@ -11,6 +11,7 @@ let timeValue;
 let defaultTimeValue = 30
 timeValue = defaultTimeValue;
 
+
 rangeLabel.insertAdjacentHTML(
   'beforeend',
   `<span class="bubble"></span>${rangeInput.value}</span>`
@@ -68,7 +69,7 @@ timeList.forEach((e) => {
     timeKm = document.querySelector('.tempo');
 /*     timeKm.innerText = event.target.innerText.toLowerCase();
  */ timeValue = Number(event.target.id);
-    tempoEconomia.textContent = ` POR ${timeKm.innerText}`.toUpperCase();
+    
  
     let newMax;
     let newDefaultValue;
@@ -77,15 +78,19 @@ timeList.forEach((e) => {
       newMax = Math.round(5000 / 30);
       newDefaultValue = Math.round(2000 / 30);    
       rangeValue = newDefaultValue
+      tempoEconomia.textContent = ` POR DIA.`
   
     } else if (timeValue === 365) {
       newMax = 5000 * 12;
       newDefaultValue = 2000 * 12;
-      rangeValue = newDefaultValue
+      rangeValue = newDefaultValue;
+      tempoEconomia.textContent = ` POR MÊS.`
+
     } else {
       newMax = 5000;
       newDefaultValue = 2000;
-      rangeValue = newDefaultValue
+      rangeValue = newDefaultValue;
+      tempoEconomia.textContent = ` POR ANO.`
 
     }
 

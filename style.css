@@ -628,6 +628,6 @@ input[type=range].colored::-webkit-slider-runnable-track {
         padding: 10px;
     }
     .mensagem-resultado .resultados{
-        margin-right: 5px;
+        text-align: left;
     }
 }

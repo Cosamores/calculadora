@@ -12,19 +12,21 @@ html {
     overflow-x: hidden;
 }
 
-header {
-    height: 370px;
-    background-image: url("./images/cover1.png");
-    background-repeat: no-repeat;
-    background-size:cover;
+header { 
     display: flex;
-    justify-content: center;
-    text-align: center;
     padding: 0;
     width: 100%;
-    display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+}
+
+header .banner {
+    width: 50%;
+    height: 300px;
+    background-size:cover;
+    background-image: url("./images/cover1.png");
+    background-repeat: no-repeat;
 }
 
 section {
@@ -495,11 +497,11 @@ input[type=range].colored::-webkit-slider-runnable-track {
         overflow-x:scroll;
     }
     
-    header {
-        height: 220px; 
-        margin: 0 auto;
-        width: 100%;
+    header .banner {
+        display: flex;
+        justify-content: center;    
     }
+    
 
     h1 {
         font-size: 32px; 
@@ -627,6 +629,7 @@ input[type=range].colored::-webkit-slider-runnable-track {
     .mensagem-emissao {
         text-align: justify;
         padding: 10px;
+        font-size: 18px;
     }
     
 }

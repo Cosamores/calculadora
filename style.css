@@ -3,6 +3,7 @@
     src: url(fonts/BARLOW/Barlow-Bold.ttf);
     src: url(fonts/DINPro/DINPro-Regular.otf);
 }
+
 html {
     max-width: 1980px;
     font-family: 'Barlow-Bold';
@@ -15,18 +16,17 @@ html {
 header { 
     display: flex;
     padding: 0;
-    width: 100%;
     justify-content: center;
     align-items: center;
     text-align: center;
+    
 }
 
-header .banner {
-    width: 50%;
-    height: 300px;
+header img{
     background-size:cover;
-    background-image: url("./images/cover1.png");
     background-repeat: no-repeat;
+    width: 100%;
+    height: auto;
 }
 
 section {
@@ -59,6 +59,7 @@ h3 {
     width: 100%;
     text-align: center;
     margin: 50px 0 0 0; 
+    padding: 70px 0 0 0;
 }
 
 .tempo-buttons {
@@ -66,7 +67,7 @@ h3 {
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    margin: 30px 0 30px 0;
+    margin: 50px 0 30px 0;
     cursor: pointer;
     padding: 0px 0px 50px 0;
 }
@@ -88,31 +89,18 @@ h3 {
     -moz-box-shadow: 4px 4px 6px -2px rgba(57,101,169,1);
     box-shadow: 4px 4px 6px -2px rgba(57,101,169,1);
 }
-/* 
-.tempo-button.active {
-    color: #0ca9e1;
-    background-color:#003ea5;
-
-} */
-
-/* .tempo-button:link,
-.tempo-button:visited,
-.tempo-button:hover,
-.tempo-button:active {
-    text-decoration: none;
-    color: inherit;
-} */
 
 .carro-selecao {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
     margin: 10px 30px 20px 30px;
+    cursor: pointer;
 }
 
 .nome-carro {
     color: inherit;
     font-weight: 900px;
+    font-size: 20px;
     border: none;
     background-color: transparent;
     overflow: hidden;
@@ -124,6 +112,7 @@ h3 {
     -webkit-box-shadow: 4px 4px 6px -2px rgba(57,101,169,1);
     -moz-box-shadow: 4px 4px 6px -2px rgba(57,101,169,1);
     box-shadow: 4px 4px 6px -2px rgba(57,101,169,1);
+    margin: 10px;
 }
 
 .active {
@@ -133,17 +122,6 @@ h3 {
     width: 70px;
 
 }
-
-/* .nome-carro:active,
-.nome-carro:focus {
-    color: #0ca9e1;
-    background-color: rgba(222, 184, 135, 0.276);
-    border-radius: 10%;
-}
- */
-/* .tempo-button:focus {
-    color:#0ca9e1;
-} */
 
 input[type="range"] {
     position: relative;
@@ -185,22 +163,49 @@ input[type="range"]::after {
 
 .km-input input[type="range"]::before {
     content: ''attr(min) '  km';
+    color:rgba(0, 0, 0, 0.703)
+
 }
 
 .km-input input[type="range"]::after {
     content: ''attr(max) ' km';
+    color:rgba(0, 0, 0, 0.703)
+
 }
 
 .gasolina-range input[type="range"]::before {
     content: 'R$ ' attr(min)'';
+    color:rgba(0, 0, 0, 0.703)
 }
 .gasolina-range input[type="range"]::after {
     content: 'R$ ' attr(max) '' ;
+    color:rgba(0, 0, 0, 0.703)
 
 }
 
-/* input[type="range"]::-moz-range-track {} */
-/* input[type="range"]::-ms-track {} */
+input[type="range"]::-moz-range-track {
+    background: rgb(85,182,252);
+    background: linear-gradient(90deg, rgba(85,182,252,1) 0%, rgba(19,97,249,1) 100%);
+    height: 10px;
+    border-radius: 10px;
+    box-shadow: inset 0px 7px 5px -5px #a6acc1;
+    -moz-appearance: none;
+    -ms-appearence: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+input[type="range"]::-ms-track {
+    background: rgb(85,182,252);
+    background: linear-gradient(90deg, rgba(85,182,252,1) 0%, rgba(19,97,249,1) 100%);
+    height: 10px;
+    border-radius: 10px;
+    box-shadow: inset 0px 7px 5px -5px #a6acc1;
+    -moz-appearance: none;
+    -ms-appearence: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
 input[type="range"]::-webkit-slider-runnable-track {
     background: rgb(85,182,252);
     background: linear-gradient(90deg, rgba(85,182,252,1) 0%, rgba(19,97,249,1) 100%);
@@ -213,8 +218,34 @@ input[type="range"]::-webkit-slider-runnable-track {
     appearance: none;
 }
 
-/* input[type="range"]::-moz-range-thumb {} */
-/* input[type="range"]::-ms-thumb {} */
+input[type="range"]::-moz-range-thumb {
+        -moz-appearance: none;
+    -ms-appearence: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgb(85,182,252);
+    background: linear-gradient(90deg, rgba(85,182,252,1) 0%, rgba(19,97,249,1) 100%);
+    width: 22px;
+    height: 22px;
+    margin: -5px 0 0 0;
+    border-radius: 50%;
+    border: 4px solid #f2f2f2;
+}
+
+input[type="range"]::-ms-thumb {
+    -moz-appearance: none;
+    -ms-appearence: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgb(85,182,252);
+    background: linear-gradient(90deg, rgba(85,182,252,1) 0%, rgba(19,97,249,1) 100%);
+    width: 22px;
+    height: 22px;
+    margin: -5px 0 0 0;
+    border-radius: 50%;
+    border: 4px solid #f2f2f2;
+} 
+
 input[type="range"]::-webkit-slider-thumb {
     -moz-appearance: none;
     -ms-appearence: none;
@@ -237,7 +268,7 @@ input[type=range].colored::-webkit-slider-runnable-track {
 .select-km {
     height: 100px;
     margin-left: 7px;
-    ;
+    padding: 10px 0 70px 0;
 }
 .km-input, .gasolina-range {
     position: relative;
@@ -282,21 +313,15 @@ input[type=range].colored::-webkit-slider-runnable-track {
 
 .resultados {
     padding: 10px 0 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.resultados h2 {
-    padding: 0;
-    margin-bottom: 0;
-    font-size: 26px;
-
-}
-.resultados .subtitle {
-    margin-top: 0;
-    color: #0d4395;
-}
-#e-js1:hover, #e-js4:hover, #e-j7:hover {
-    color: #0ca9e1;
-    cursor: pointer;
+.line {
+    border-bottom: 1px solid #cccccc86;
+    width: 100%;
+    padding: 20px 0 20px 0;
 }
 
 .tabela-resultados {
@@ -305,6 +330,7 @@ input[type=range].colored::-webkit-slider-runnable-track {
     text-align: center;
     align-items: center;
     justify-content: center;
+    font-weight: 900;
 }
 
 .thead {
@@ -313,7 +339,7 @@ input[type=range].colored::-webkit-slider-runnable-track {
     font-size: 18px;
     padding: 0 auto;
     overflow: hidden;
-    border-radius: 10%;
+    border-radius: 15px;
     color: white;
     height: inherit;
 
@@ -322,7 +348,7 @@ input[type=range].colored::-webkit-slider-runnable-track {
 .tbody {
     display: flex;
     flex-direction: column;
-    border-radius:10%;
+    border-radius:10px;
     overflow: hidden;
     color: #0249bd;
     margin: 0 0 0 10px;
@@ -331,14 +357,14 @@ input[type=range].colored::-webkit-slider-runnable-track {
 }
 .thead div {
     padding-top: 7px;
-    width: 270px;
+    width: 320px;
     height: 2.4em;
 }
 
 .tbody div {
     padding-top: 7px;
     font-size: 20px;
-    width: 100px;
+    width: 150px;
     height: 2.2em;
 }
 .thead div:nth-child(odd) {
@@ -358,39 +384,89 @@ input[type=range].colored::-webkit-slider-runnable-track {
     background-color: #d5d5d5;
 }
 
-
-.mensagem-resultado, .totalizando {
-    padding: 0px 0 0px 0;
+.resultado-box {
+    position:relative;
+    margin: 100px 0 0 0;
+    border-radius: 15px;
+    border: 1px solid #24457b9f;
+    width: auto;
+    min-width: 68%;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-size: 20px;
-    color: #0d4395;
+    font-variant: small-caps;
+}
+
+.resultado-titulo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    top: -20px;
+    border-radius: 20px;
+    background-color: #ebebeb;
+    width: 240px;
+    font-size: 26px;
+    font-weight: 900;
+    color:#003ea5
+}
+
+.resultado-titulo img {
+    width: 30px;
+    height: 30px;
+    background-color: #003ea5;
+    border-radius: 5px;
+}
+
+.resultado-top {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 0.5px solid #1a325997;
+    height: 65%;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.resultado-termico {
+    border-right: 1px solid #1a325992;
+    text-align: center;
+    width: 50%;
+    color: #003ea5;
+    font-weight: 800;
+    padding: 13px 10px 5px 10px;
+}
+
+.termico, 
+.eletrico, 
+.combustivel-eletrico,
+.combustivel-termico {
+    font-size: 28px !important;
+    font-weight: 900;
+}
+
+.resultado-eletrico {
+    text-align: center;
+    width: 50%;
+    color: #003ea5;
+    font-weight: 900;
+    padding: 13px 10px 5px 10px;
+}
+
+.economia-card {
+    color: #003ea5;
+    font-weight: 900;
 }
 
 .manutencao-economia {
-    font-size: 24px;
-}
-.mensagem-resultado p, .totalizando p {
-    font-family: 'Barlow-SemiBold 2', tahoma;
-    padding-top: 0;
-}
-
-.mensagem-resultado span, .termico, .eletrico, .totalizando span {
-    font-family: 'Barlow-Bold';
-    font-weight: 600;
-}
-
-.mensagem-emissao, .economia-total-5-anos, .manutencao-termico, .manutencao-eletrico {
-    font-family: 'Barlow-SemiBold 2', tahoma;
-    color: #0d4395;
     font-size: 20px;
 }
-.economia-total-5-anos {
-    font-size: 22px;
-    font-weight: 600;
-}
 
-.selected {
-    color:#0ca9e1;
-}
+
+/* ------- Formulário ------- */
 
 .modal {
     position: fixed;
@@ -499,19 +575,7 @@ input[type=range].colored::-webkit-slider-runnable-track {
   input[type="submit"]:hover {
     background-color: #0d8bf2;
   }
-/*   @keyframes rotate {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  #floating-button:hover {
-    animation: rotate 0.3s linear;
-  } */
-  
+
 
 
 @media screen and (max-width: 768px) and (min-width: 144px) {
@@ -521,12 +585,6 @@ input[type=range].colored::-webkit-slider-runnable-track {
         overflow-x:scroll;
     }
     
-    header .banner {
-        display: flex;
-        justify-content: center;    
-    }
-    
-
     h1 {
         font-size: 32px; 
     }
@@ -565,15 +623,18 @@ input[type=range].colored::-webkit-slider-runnable-track {
         left: 12px;
     }
 
+    .tempo-selection h3 {
+        white-space: nowrap;
+    }
     .tempo-buttons {
         flex-direction: row-reverse; 
         align-items: center;  
-        padding: 0px 0 20px 0;
+        padding: 0px 0 10px 0;
         height: 0px;
     }
 
     .tempo-button {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 600;
         margin: 0 5px 0 5px;
     }
@@ -620,6 +681,7 @@ input[type=range].colored::-webkit-slider-runnable-track {
     .tabela-resultados {
         flex-direction: row; 
         align-items: center;
+        font-weight: 600;
     }
 
     .thead,
@@ -638,22 +700,99 @@ input[type=range].colored::-webkit-slider-runnable-track {
     .thead {
         height: inherit;
         font-size: 9px;
-        width: 140%;
+        width: 150%;
     }
     .tbody div {
         font-size: 12px;
+        width: 68px;
+        text-align: center;
     }
 
-    .manutencao-main h2 {
-        text-align: center;
-        letter-spacing: 0.5px;
-        white-space: pre-wrap;
-        
-    }
-    .mensagem-emissao {
-        text-align: justify;
-        padding: 10px;
-        font-size: 18px;
-    }
     
+    .rs {
+        font-size: 12px;
+        font-weight: 900;
+    }
+
+    .line {
+        padding: 10px 0 10px 0;
+    }
+    .resultado-box {
+        position:relative;
+        margin: 50px 0 0 0;
+        border-radius: 15px;
+        border: 1px solid #24457b9f;
+        width: 96%;
+        height: 90px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        font-variant: small-caps;
+    }
+
+    .resultado-titulo {
+        position: absolute;
+        top: -13px;
+        border-radius: 20px;
+        background-color: #e1e1e1;
+        width: 170px;
+        font-size: 18px;
+        font-weight: 900;
+        color:#003ea5
+    }
+
+    .resultado-titulo img {
+        width: 20px;
+        height: 20px;
+        background-color: #003ea5;
+        border-radius: 5px;
+    }
+    .resultado-top {
+        display: flex;
+        flex-direction: row;
+        border-bottom: 0.5px solid #1a325997;
+        height: 65%;
+        white-space: nowrap;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .resultado-termico {
+        border-right: 1px solid #1a325992;
+        text-align: center;
+        width: 50%;
+        color: #003ea5;
+        font-weight: 800;
+        padding: 13px 10px 5px 10px;
+    }
+
+    .termico, 
+    .eletrico, 
+    .combustivel-eletrico,
+    .combustivel-termico {
+        font-size: 20px !important;
+        font-weight: 900;
+    }
+
+
+
+    .resultado-eletrico {
+        text-align: center;
+        width: 50%;
+        color: #003ea5;
+        font-weight: 900;
+        padding: 13px 10px 5px 10px;
+    }
+
+    .economia-card {
+        color: #003ea5;
+        font-weight: 900;
+    }
+
+    .manutencao-economia {
+        font-size: 20px;
+    }
+
 }

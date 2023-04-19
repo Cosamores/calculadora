@@ -11,7 +11,7 @@
     <header class="intro">
         <div class="banner">
 <!--         <h1>Economia</br>100% elétrico</h1> -->
- <!--    <img src="./images/header.jpeg" alt="carros"> -->
+            <img src="./images/banner.png" alt="carros">
         </div>    
 </header>
 
@@ -20,7 +20,7 @@
     <section class="dia-mes-ano">
         <div class="select-tempo">
             <div class="tempo-selector">
-                <h3>Quantos quilômetros (km) você percorre por: <span class="tempo"></span></h3>
+                <h3>Quantos quilômetros você percorre por: <span class="tempo"></span></h3>
                 <div class="tempo-buttons">
                     <button class="tempo-button" id="1" value="dia">DIA</button>
                     <button class="tempo-button active" id="30" value="mês">MÊS</button>
@@ -34,31 +34,7 @@
             </div>
         </div>
     </section>
-
-    <!-- Seletor de tipo de veículo -->
-<!--
-    <section class="veiculo-tipo">
-        <h3>Qual modelo de veículo térmico você deseja comparar?</h3>
-        <div class="tipo-seletor">
-            <div class="tipo hatch">
-                <button class="nome-carro hatch" value="hatch">
-                <img src="./images/ejs1_celeste.png" alt="hatch"></br>
-                HATCH</button>
-            </div>
-            <div class="tipo suv">
-                <button class="nome-carro suv" value="suv">
-                <img src="./images/e-js4_lateral.png" alt="suv"></br> 
-                SUV</button>
-            </div>
-            <div class="tipo sedan">
-                <button class="nome-carro hatch" value="sedan">
-                <img src="./images/e-j7_lateral.jpeg" alt="sedan"> </br> 
-                SEDAN
-                </button>
-            </div>
-        </div>
-    </section>
--->
+    
     <!-- Seletor de preço de gasolina -->
 
     <section class="gasolina-preco">
@@ -70,7 +46,7 @@
     
     <section class="resultados">
        
-            <h2>SELECIONE O MODELO DESEJADO: </h2>
+            <h3>Selecione o modelo desejado:  </h3>
             <div class="carro-selecao">
             <div value="e-js1" class="nome-carro carro active"> E-JS1 </div> 
             <div value="e-js4" class="nome-carro carro"> E-JS4 </div> 
@@ -116,23 +92,56 @@
                 <div class="economia-5-anos"></div>
             </div>
     </div>
+
+    <!-- Resultados de economia em combustível -->
+
+<div class="resultado-box combustivel">
+    <div class="resultado-titulo">
+        <img src="./images/bomba-de-gasolina.svg" al="ícone de bomba de combustível">
+        <div class="titulo">COMBUSTÍVEL</div>
+    </div>
+    <div class="resultado-top">
+        <div class="resultado-termico">
+            <span class="carro-tipo">HATCH</span> TÉRMICO:</br> <span class="rs">R$</span><span class="combustivel-termico"></span><span class="tempo-resultados"></span>
+        </div>
+        <div class="resultado-eletrico">
+            <span class="carro-nome">E-JS1</span> 100% ELÉTRICO:</br><span class="rs">R$</span><span class="combustivel-eletrico"></span><span class="tempo-resultados"></span>
+        </div>
+    </div>
+    <div class="economia-card totalizando">
+        ECONOMIA <span class="time-stamp">MENSAL</span> DE <span class="rs">R$</span><span class="economia"></span>
+    </div>
+</div>
+<div class="resultado-emissao">
+    <p>Além de não emitir <span class="emissao">muitas</span> toneladas de CO2 atmosfera, dirigir sem vibrações, com aceleração instantânea e contínua!</p>
+</div>
+
+<span class="line"></span>
     
-    <div class="manutencao-main">
-        <h2>AS DIFERENÇAS EM MANUTENÇÃO PARA AS DUAS TECNOLOGIAS:</h2>
-        <p class="manutencao-termico"> <span class="carro-tipo">HATCH</span> TÉRMICO: <span class="termico">Veja a diferença</p>
-        <P class="manutencao-eletrico"><span class="carro-nome">E-JS1</span> 100% ELÉTRICO: <span class="eletrico">Utilize nossa calculadora!</span></P>
-    </div> 
-    <div class="totalizando">
-        TOTALIZANDO EM UMA ECONOMIA MENSAL DE <span class="manutencao-economia">muitos reais!</span>
+<!-- Resultados de economia em Manutenção -->
+
+<div class="resultado-box manutencao">
+    <div class="resultado-titulo">
+        <img src="./images/manutencao.svg" al="ícone de ferramenta de manutenção">
+        <div class="titulo">MANUTENÇÃO</div>
     </div>
-    <div class="mensagem-resultado .resultados">
-        <h2>COMPARANDO UM <span class="carro-tipo">HATCH</span> COM O <span class="carro-nome">E-JS1</span> </br>VOCÊ <span class="economia">ECONOMIZA: ????</span><span class="tempo-economia"> POR MÊS</span></h2>
+    <div class="resultado-top">
+        <div class="resultado-termico manutencao-termico">
+            <span class="carro-tipo">HATCH</span> TÉRMICO:</br> <span class="rs">R$</span><span class="termico"></span><span class="tempo-resultados"></span>
+        </div>
+        <div class="resultado-eletrico manutencao-eletrico">
+            <span class="carro-nome">E-JS1</span> 100% ELÉTRICO:</br><span class="rs">R$</span><span class="eletrico"></span><span class="tempo-resultados"></span>
+        </div>
     </div>
-    <div class="mensagem-emissao">
-        <p economia-5-anos>Ou seja, nessas condições, na troca de um <span class="carro-tipo">hatch</span> térmico por um <span class="carro-nome">E-JS1</span> 100% elétrico você economiza <span class="economia-total-5-anos">muitos</span> num período de 5 anos!</br>Além de não emitir <span class="emissao">muitas</span> toneladas de CO2 por ano na atmosfera, dirigir sem vibrações, com aceleração instantânea e contínua!</p>
+    <div class="economia-card totalizando">
+        ECONOMIA <span class="time-stamp">MENSAL</span> DE <span class="rs">R$</span><span class="manutencao-economia"></span>
+    </div>
+</div>
+
+    <div class="resultado-emissao">
+        <p economia-5-anos>Ou seja, nessas condições, na troca de um <span class="carro-tipo">hatch</span> térmico por um <span class="carro-nome">E-JS1</span> 100% elétrico você economiza <span class="economia-total-5-anos">muitos</span> num período de 5 anos!</p>
     </div>
 
-    </div>
 </section>
 <div class="modal-experience">
 <button id="floating-button">+</button>

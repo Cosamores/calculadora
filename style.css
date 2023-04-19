@@ -66,7 +66,7 @@ h3 {
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    margin-bottom: 15px;
+    margin: 30px 0 30px 0;
     cursor: pointer;
     padding: 0px 0px 50px 0;
 }
@@ -80,19 +80,34 @@ h3 {
     cursor: pointer;
     outline: inherit;
     margin: 0 15px 0 15px;
+    height: 1.5em;
+    border: 1px solid #3965a9;
+    width: 70px;
+    border-radius: 10%;
+    -webkit-box-shadow: 4px 4px 6px -2px rgba(57,101,169,1);
+    -moz-box-shadow: 4px 4px 6px -2px rgba(57,101,169,1);
+    box-shadow: 4px 4px 6px -2px rgba(57,101,169,1);
 }
-
+/* 
 .tempo-button.active {
     color: #0ca9e1;
-    background-color: rgba(222, 184, 135, 0.276);
-}
+    background-color:#003ea5;
 
-.tempo-button:link,
+} */
+
+/* .tempo-button:link,
 .tempo-button:visited,
 .tempo-button:hover,
 .tempo-button:active {
     text-decoration: none;
     color: inherit;
+} */
+
+.carro-selecao {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 10px 30px 20px 30px;
 }
 
 .nome-carro {
@@ -102,24 +117,33 @@ h3 {
     background-color: transparent;
     overflow: hidden;
     cursor:pointer;
+    height: 1.5em;
+    border: 1px solid #3965a9;
+    width: 70px;
+    border-radius: 10%;
+    -webkit-box-shadow: 4px 4px 6px -2px rgba(57,101,169,1);
+    -moz-box-shadow: 4px 4px 6px -2px rgba(57,101,169,1);
+    box-shadow: 4px 4px 6px -2px rgba(57,101,169,1);
 }
 
 .active {
-    color: #0ca9e1;
-    background-color: rgba(222, 184, 135, 0.276);
+    color: #ffffff;
+    background-color:#3965a9;
     border-radius: 10%;
+    width: 70px;
+
 }
 
-.nome-carro:active,
+/* .nome-carro:active,
 .nome-carro:focus {
     color: #0ca9e1;
     background-color: rgba(222, 184, 135, 0.276);
     border-radius: 10%;
 }
-
-.tempo-button:focus {
+ */
+/* .tempo-button:focus {
     color:#0ca9e1;
-}
+} */
 
 input[type="range"] {
     position: relative;
@@ -217,7 +241,7 @@ input[type=range].colored::-webkit-slider-runnable-track {
 }
 .km-input, .gasolina-range {
     position: relative;
-    padding-bottom: 50px;
+    padding-bottom: 10px;
     color: transparent
     
 }

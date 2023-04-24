@@ -292,18 +292,7 @@ input[type=range].colored::-webkit-slider-runnable-track {
     transform: translate(-50%);
 }
 
-.range-bubble {
-    position: absolute;
-    transform: translateY(-50%) translateX(-50%);
-    background-color: #333;
-    color: white;
-    padding: 4px 8px;
-    border-radius: 10px;
-    font-size: 14px;
-    display: none;
-    white-space: nowrap;
-    user-select: none;
-  }
+
   
 
 .tipo-seletor {
@@ -332,6 +321,11 @@ input[type=range].colored::-webkit-slider-runnable-track {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.rs {
+    font-size: 16px;
+    font-weight: 900;
 }
 
 .line {

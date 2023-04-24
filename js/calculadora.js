@@ -365,10 +365,9 @@ const calculateResults = () => {
     .toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     .replace("R$", "");
   document.querySelector(".economia-total-5-anos").textContent = (
-    Math.round(economiaTotal * 360)
+    economiaTotal * 360 * 5
   )
-    .toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
-    .replace("R$", "");
+    .toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
   document.querySelector(".combustivel-termico").textContent = (
     custoGasolinaG * timeValue

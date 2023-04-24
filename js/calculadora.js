@@ -97,10 +97,10 @@ timeList.forEach((e) => {
 
     defineDefaults();
 
-    kmInput.setAttribute("max", newMax);
-    kmInput.style.setProperty("--max", newMax);
-    kmInput.value = newDefaultValue;
-    gasBubble.textContent = newDefaultValue;
+    kmInput.setAttribute("max",  Math.round(newMax));
+    kmInput.style.setProperty("--max", Math.round(newMax));
+    kmInput.value = (newDefaultValue);
+    gasBubble.textContent = (newDefaultValue);
 
     positionBubble();
     positionGasBubble();
@@ -128,13 +128,13 @@ carNames.forEach((span) => span.addEventListener("click", toggleActiveClass));
 
 rangeInput.addEventListener("input", () => {
   positionBubble();
-  rangeValue = Math.round(rangeBubble.textContent);
+  rangeValue = rangeBubble.textContent;
   calculateResults();
 });
 
 gasInput.addEventListener("input", () => {
   positionGasBubble();
-  gasValue = Math.round(gasBubble.textContent);
+  gasValue = gasBubble.textContent;
   calculateResults();
 });
 let defaultRangeValue = Number(rangeBubble.textContent);
@@ -171,7 +171,7 @@ carros.forEach((e) => {
     )
       .trim()
       .toUpperCase();
-    if (carro == "HATCH" || carro == "E-JS1") {
+    if (carro == "E-JS1") {
       Carro.nome = "E-JS1";
       Carro.modelo = "HATCH";
       Carro.manutencaoE = Number(manutencaoEl[0]);
@@ -235,20 +235,20 @@ const defineDefaults = () => {
   }
 
   if (timeValue === 1) {
-    newMax = Math.round(8000 / 30);
-    newDefaultValue = Math.round(4000 / 30);
+    newMax = 10000 / 30;
+    newDefaultValue = 5000 / 30;
     rangeValue = newDefaultValue;
     textA = " POR DIA";
     textB = " DIÁRIA";
-  } else if (timeValue === 365) {
-    newMax = 8000 * 12;
-    newDefaultValue = 4000 * 12;
+  } else if (timeValue === 360) {
+    newMax = 10000 * 12;
+    newDefaultValue = 5000 * 12;
     rangeValue = newDefaultValue;
     textA = " POR ANO";
     textB = " ANUAL";
   } else {
-    newMax = 8000;
-    newDefaultValue = 4000;
+    newMax = 10000;
+    newDefaultValue = 5000;
     rangeValue = newDefaultValue;
     textA = ` POR MÊS`;
     textB = " MENSAL";
@@ -269,7 +269,8 @@ const calculateResults = () => {
 
   // Cálculos para o modelo a combustão
 
-  const kmRodadosG = rangeValue / timeValue;
+  const kmRodadosG = parseFloat(rangeValue / timeValue);
+  console.log('km rodados: ' + kmRodadosG)
   const litrosG = kmRodadosG / Carro.consumoG;
   const custoGasolinaG = litrosG * gasValue;
   const custoManutencaoG = kmRodadosG * Carro.manutencaoG;
@@ -284,22 +285,20 @@ const calculateResults = () => {
   const economia = custoGasolinaG - custoEnergiaE;
   const economiaTotal = custoTotalG - custoTotalE;
 
-  document.querySelector(".km-rodados-dia").textContent = Math.round(rangeValue / timeValue)
-    .toFixed(0);
+  document.querySelector(".km-rodados-dia").textContent = Math.round(kmRodadosG);
   document.querySelector(".combustivel-dia").textContent = custoGasolinaG
     .toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     .replace("R$", "");
-  document.querySelector(".energia-dia").textContent = custoEnergiaE
+  document.querySelector(".energia-dia").textContent = (custoEnergiaE)
     .toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     .replace("R$", "");
   document.querySelector(".economia-dia").textContent = economia
     .toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     .replace("R$", "");
-  document.querySelector(".km-rodados-mes").textContent = Math.round(rangeValue * 30)
+  document.querySelector(".km-rodados-mes").textContent = (kmRodadosG * 30)
     .toFixed(0);
   document.querySelector(".combustivel-mes").textContent = `${(
-    custoGasolinaG * 30
-  )
+    custoGasolinaG * 30)
     .toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     .replace("R$", "")}`;
   document.querySelector(".energia-mes").textContent = (custoEnergiaE * 30)
@@ -309,36 +308,36 @@ const calculateResults = () => {
     .toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     .replace("R$", "")}`;
 
-  document.querySelector(".km-rodados-ano").textContent = ((kmRodadosE * 30) * 12)
+  document.querySelector(".km-rodados-ano").textContent = Math.round((kmRodadosG * 30) * 12)
     .toFixed(0);
   document.querySelector(".combustivel-ano").textContent = (
-    (custoGasolinaG * 30) * 12
+    custoGasolinaG * 360
   )
     .toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     .replace("R$", "");
-  document.querySelector(".energia-ano").textContent = ((custoEnergiaE * 30) * 12)
+  document.querySelector(".energia-ano").textContent = (custoEnergiaE * 360)
     .toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     .replace("R$", "");
-  document.querySelector(".economia-ano").textContent = ((economia * 30) * 12)
+  document.querySelector(".economia-ano").textContent = (economia * 360)
     .toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     .replace("R$", "");
 
-  document.querySelector(".km-rodados-5-anos").textContent = (((
-    kmRodadosE  * 30) * 12) * 5
+  document.querySelector(".km-rodados-5-anos").textContent = (
+    kmRodadosG  * 360
   )
     .toFixed(0);
-  document.querySelector(".combustivel-5-anos").textContent = (((
-    custoGasolinaG * 30) * 12) * 5
+  document.querySelector(".combustivel-5-anos").textContent = (
+    custoGasolinaG * 360
   )
     .toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     .replace("R$", "");
-  document.querySelector(".energia-5-anos").textContent = (((
-    custoEnergiaE * 30) * 12) * 5
+  document.querySelector(".energia-5-anos").textContent = (
+    custoEnergiaE * 360
   )
     .toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     .replace("R$", "");
-  document.querySelector(".economia-5-anos").textContent = (((
-    economia * 30) * 12) * 5
+  document.querySelector(".economia-5-anos").textContent = (
+    economia * 360
   )
     .toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     .replace("R$", "");
@@ -366,7 +365,7 @@ const calculateResults = () => {
     .toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     .replace("R$", "");
   document.querySelector(".economia-total-5-anos").textContent = (
-    (economiaTotal * 12) * 5
+    Math.round(economiaTotal * 360)
   )
     .toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     .replace("R$", "");

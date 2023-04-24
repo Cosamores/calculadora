@@ -1,0 +1,19 @@
+# Calculadora
+
+Tarefas:
+
+- Adicionar tempo aos resultados.
+- Adicionar resultados de economia de combustivel:
+
+	valor * tempo
+
+
+
+
+
+
+
+
+Endereço transferwise Berlin
+Beermannstraße 6
+12435

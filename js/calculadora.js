@@ -270,7 +270,6 @@ const calculateResults = () => {
   // Cálculos para o modelo a combustão
 
   const kmRodadosG = parseFloat(rangeValue / timeValue);
-  console.log('km rodados: ' + kmRodadosG)
   const litrosG = kmRodadosG / Carro.consumoG;
   const custoGasolinaG = litrosG * gasValue;
   const custoManutencaoG = kmRodadosG * Carro.manutencaoG;

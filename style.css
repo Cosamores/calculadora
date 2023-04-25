@@ -710,7 +710,7 @@ input[type=range].colored::-webkit-slider-runnable-track {
 
     .thead,
     .tbody {
-        margin: 0 2px; 
+        margin: 0; 
         width: 100%;
     }
 
@@ -729,7 +729,6 @@ input[type=range].colored::-webkit-slider-runnable-track {
     .tbody div {
         font-size: 12px;
         width: 68px;
-        text-align: center;
     }
 
     

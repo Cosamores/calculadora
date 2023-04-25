@@ -323,21 +323,21 @@ const calculateResults = () => {
     .replace("R$", "");
 
   document.querySelector(".km-rodados-5-anos").textContent = (
-    kmRodadosG  * 360
+    (kmRodadosG  * 360) * 5
   )
     .toFixed(0);
   document.querySelector(".combustivel-5-anos").textContent = (
-    custoGasolinaG * 360
+    (custoGasolinaG * 360) * 5
   )
     .toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     .replace("R$", "");
   document.querySelector(".energia-5-anos").textContent = (
-    custoEnergiaE * 360
+    (custoEnergiaE * 360) * 5
   )
     .toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     .replace("R$", "");
   document.querySelector(".economia-5-anos").textContent = (
-    economia * 360
+    (economia * 360) * 5
   )
     .toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     .replace("R$", "");

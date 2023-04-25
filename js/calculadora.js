@@ -69,7 +69,7 @@ function positionGasBubble() {
   if (screenWidth < 768) { // Adjust this value based on your mobile breakpoint
     additionalOffset = 20; // Adjust this value to fit the bubble better on mobile
   } else {
-    additionalOffset = 76; // The original value for desktop
+    additionalOffset = 70; // The original value for desktop
   }
 
   gasBubble.style.left = `${offset + additionalOffset}px`;

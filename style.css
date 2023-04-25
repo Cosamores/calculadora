@@ -97,7 +97,8 @@ h3 {
     cursor: pointer;
     font-size: 20px;
     font-weight: bold;
-
+    align-items: center;
+    vertical-align:middle;
 }
 
 .nome-carro {
@@ -115,6 +116,7 @@ h3 {
     box-shadow: 4px 4px 6px -2px rgba(57,101,169,1);
     margin: 10px;
     text-align: center;
+    line-height: 120%;
 }
 
 .active {

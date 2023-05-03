@@ -346,11 +346,11 @@ const gasCanvas = document.getElementById("termico-chart").getContext("2d");
         
 
       if(mq.matches) {
-        const xLine = x >= halfWidth ? x + 90 : x - 90;
+        const xLine = x >= halfWidth ? x + 100 : x - 110;
         const yLine = x >= halfHeight ? y - 25 : y + 25;
         const extraLine = x >= halfWidth ? 15 : -15;
         const textWidth = ctx.measureText(datapoint).width;
-        const textWidthPosition = x >= halfWidth ? textWidth -30 : -textWidth +30;
+        const textWidthPosition = x >= halfWidth ? textWidth -20 : -textWidth +20;
 
         ctx.strokeStyle = data.datasets[0].borderColor[index];
         ctx.beginPath();
@@ -406,14 +406,15 @@ const customLayout = {
           position: 'bottom', 
           maxWidth: mq.matches ? 100 : 200,
           fullWidth: false,
-   
+  
         },
         title: {
           display: true,
           text: `Valores para ${Carro.nome}`,
           padding: {
             top: 20,
-            bottom: 40          }
+            bottom: 40   
+          }
         },
       }
     },

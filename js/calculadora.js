@@ -410,11 +410,14 @@ const customLayout = {
         },
         title: {
           display: true,
-          text: `Valores para ${Carro.nome}`,
+          text: `Gasto em 5 nos com um ${Carro.nome}`,
           padding: {
             top: 20,
             bottom: 40   
-          }
+          },
+          font: {
+            size: 20
+          } 
         },
       }
     },
@@ -437,11 +440,14 @@ const customLayout = {
         },
         title: {
           display: true,
-          text: `Valores para ${capitalize(Carro.modelo)} Térmico`,
+          text: `Gasto em 5 anos com um ${capitalize(Carro.modelo)} Térmico`,
           padding: {
             top: 20,
             bottom: 40
-          }
+          }, 
+          font: {
+            size: 20
+          } 
         },
       }
     },

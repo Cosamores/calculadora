@@ -80,3 +80,33 @@ document.addEventListener('mousemove', handlePointerMove);
 document.addEventListener('touchmove', handlePointerMove);
 document.addEventListener('mouseup', handlePointerUp);
 document.addEventListener('touchend', handlePointerUp);
+
+
+
+
+
+
+
+/* HTML: 
+
+<!-- <div class="modal-experience">
+<button id="floating-button">+</button>
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Formulário</h3>
+    <form>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome">
+    
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email">
+      
+      <input type="submit" value="Enviar">
+    </form>
+  </div>
+</div>
+</div> -->
+
+
+*/

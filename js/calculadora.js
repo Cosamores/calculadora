@@ -1,3 +1,4 @@
+const mq = window.matchMedia( "(min-width: 1300px)");
 const rangeLabel = document.querySelector(".km-input");
 const rangeInput = rangeLabel.children[0];
 
@@ -13,6 +14,8 @@ let newDefaultValue;
 let newMax;
 let textA;
 let textB;
+let rangeValue;
+let gasValue; 
 timeValue = defaultTimeValue;
 
 rangeLabel.insertAdjacentHTML(
@@ -146,7 +149,16 @@ const manutencaoEl = [0.045, 0.05, 0.049];
 const manutencaoGas = [0.19, 0.22, 0.21];
 const precoEnergia = 0.85;
 
+const ejs1 = 145900;
+const ejs4 = 242900;
+const ej7 = 252900;
+const hatchTermico = 100000;
+const suvTermico = 170000;
+const sedanTermico = 180000;
+
 const Carro = {};
+let precoCompraEl = ejs1;
+let precoCompraG = hatchTermico;
 
 Carro.nome = "E-JS1";
 Carro.modelo = "hatch";
@@ -154,11 +166,6 @@ Carro.manutencaoE = Number(manutencaoEl[0]);
 Carro.manutencaoG = Number(manutencaoGas[0]);
 Carro.consumoE = Number(consumoEl[0]);
 Carro.consumoG = Number(consumoGas[0]);
-Carro.defaultSelection = function () {
-  document.querySelector(".nome-carro.hatch").classList.add("active");
-  document.querySelector(".nome-carro.suv").classList.remove("active");
-  document.querySelector(".nome-carro.sedan").classList.remove("active");
-};
 
 const carros = document.querySelectorAll(".nome-carro");
 carros.forEach((e) => {
@@ -178,7 +185,8 @@ carros.forEach((e) => {
       Carro.manutencaoG = Number(manutencaoGas[0]);
       Carro.consumoE = Number(consumoEl[0]);
       Carro.consumoG = Number(consumoGas[0]);
-
+      precoCompraEl = ejs1;
+      precoCompraG = hatchTermico;
       changeCarName(carroNome);
       changeCarModel(carroTipo);
       calculateResults();
@@ -190,10 +198,12 @@ carros.forEach((e) => {
       Carro.consumoE = Number(consumoEl[1]);
       Carro.manutencaoG = Number(manutencaoGas[1]);
       Carro.consumoG = Number(consumoGas[1]);
-
+      precoCompraEl = ejs4;
+      precoCompraG = suvTermico;
       changeCarName(carroNome);
       changeCarModel(carroTipo);
       calculateResults();
+      
     }
     if (carro == "E-J7") {
       Carro.nome = "E-J7";
@@ -202,7 +212,9 @@ carros.forEach((e) => {
       Carro.consumoE = Number(consumoEl[2]);
       Carro.manutencaoG = Number(manutencaoGas[2]);
       Carro.consumoG = Number(consumoGas[2]);
-
+      precoCompraEl = ej7;
+      precoCompraG = sedanTermico;
+      
       changeCarName(carroNome);
       changeCarModel(carroTipo);
       calculateResults();
@@ -255,6 +267,210 @@ const defineDefaults = () => {
   }
 };
 
+const defineRate = (total, valor2) => {
+  let rate = (valor2 / total) * 100; 
+  return Math.round(rate);
+}
+
+const capitalize = (word) =>{
+  const firstChar = word.charAt(0);
+  const upper = firstChar.toUpperCase();
+  const capitalized = upper + word.slice(1);
+  return capitalized; 
+}
+
+const createChart = () => {
+const elCanvas = document.getElementById("eletrico-chart").getContext("2d");
+const gasCanvas = document.getElementById("termico-chart").getContext("2d");
+
+  const elChartData = {
+    labels: [Carro.nome, 'Energia', 'Manutenção'],
+    datasets: [
+      {
+        data: [],
+        backgroundColor: [
+          'rgb(90, 123, 191, 0.5)',
+          'rgb(255, 190, 135, 0.5)',
+          'rgb(213, 215, 210, 0.5)'
+        ],
+        borderColor: [
+          'rgb(37, 150, 190, 1)',
+          'rgb(255, 146, 51, 1)',
+          'rgb(154, 159, 147)'
+        ],
+        cutout: '50%',
+        offset: 1
+      },
+    ],
+  };
+
+  const gasChartData = {
+    labels: [`${capitalize(Carro.modelo)} Térmico`, 'Combustível', 'Manutenção'],
+    datasets: [
+      {
+        data: [],
+        backgroundColor: [
+          'rgb(90, 123, 191, 0.5)',
+          'rgb(255, 190, 135, 0.5)',
+          'rgb(213, 215, 210, 0.5)'
+        ],
+        borderColor: [
+          'rgb(37, 150, 190, 1)',
+          'rgb(255, 146, 51, 1)',
+          'rgb(154, 159, 147)'
+        ],
+        cutout: '50%',
+        offset: 1,
+      },
+    ],
+  };
+
+  const chartOptions = {
+  }
+  
+   const customDatalabels = {
+    id: 'customDatalabels', 
+    afterDatasetsDraw: (chart, args, pluginOptions) => {
+      const {ctx, data, chartArea: {top, bottom, left, right, width, height} } = chart;
+      ctx.save();
+      const halfWidth = width / 2 + left;
+      const halfHeight = height / 2 + top;
+
+    data.datasets[0].data.forEach((datapoint, index) => {
+      const {x, y } = chart.getDatasetMeta(0).data[index].tooltipPosition();
+        ctx.font = 'bold 14px sans-serif';
+        ctx.fillStyle = data.datasets[0].borderColor[index];
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        
+        
+
+      if(mq.matches) {
+        const xLine = x >= halfWidth ? x + 90 : x - 90;
+        const yLine = x >= halfHeight ? y - 25 : y + 25;
+        const extraLine = x >= halfWidth ? 15 : -15;
+        const textWidth = ctx.measureText(datapoint).width;
+        const textWidthPosition = x >= halfWidth ? textWidth -30 : -textWidth +30;
+
+        ctx.strokeStyle = data.datasets[0].borderColor[index];
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(xLine, yLine);
+        ctx.lineTo(xLine + extraLine, yLine);
+        ctx.stroke();
+        ctx.fillText(datapoint, xLine  + extraLine + textWidthPosition, yLine);
+      } else {
+        const xLine = x >= halfWidth ? x + 50 : x - 60;
+        const yLine = x >= halfHeight ? y - 25 : y + 25;
+        const extraLine = x >= halfWidth ? 15 : -15;
+        const textWidth = ctx.measureText(datapoint).width;
+        const textWidthPosition = x >= halfWidth ? textWidth -30 : -textWidth +30;
+        ctx.fillText(datapoint, x, y);
+      }
+    
+    }) 
+  }
+} 
+
+const customLayout = {
+  id: 'customPadding',
+  beforeUpdate: (chart, args, pluginOptions) => {
+    if (mq.matches) {
+      chart.options.layout.padding = {
+        top: 50,
+        right: 50,
+        bottom: 50,
+        left: 50,
+      };
+      
+    } else {
+      chart.options.layout.padding = -10;
+    }
+    
+  },
+  
+};
+
+
+
+/* Chart.overrides.doughnut.plugins.legend.display = false;
+ */  const elChart = new Chart(elCanvas, {
+    type: 'doughnut',
+    data: elChartData,
+    
+    options: {
+      borderAlign: 'inner',
+      plugins: {
+        legend: {
+          display: true,
+          position: 'bottom', 
+          maxWidth: mq.matches ? 100 : 200,
+          fullWidth: false,
+   
+        },
+        title: {
+          display: true,
+          text: `Valores para ${Carro.nome}`,
+          padding: {
+            top: 20,
+            bottom: 40          }
+        },
+      }
+    },
+    plugins: [customDatalabels, customLayout],
+    });
+
+  const gasChart = new Chart(gasCanvas, {
+    type: 'doughnut',
+    data: gasChartData,
+    options: {
+      layout: {
+        padding: 40
+      },
+      borderAlign: 'inner',
+      responsive: true,
+      plugins: {
+        legend: {
+          display: true,
+          position: 'bottom',  
+        },
+        title: {
+          display: true,
+          text: `Valores para ${capitalize(Carro.modelo)} Térmico`,
+          padding: {
+            top: 20,
+            bottom: 40
+          }
+        },
+      }
+    },
+    plugins: [customDatalabels, customLayout],
+    });
+
+  const updateChartData = (precoCompraEl, custoPorCemEl, manutencaoPorCemEl, precoCompraG, custoPorCemGas, manutencaoPorCemGas, totalEl, totalGas) => {
+    elChartData.datasets[0].data = [
+      Number(19000).toFixed(2),
+      Number(custoPorCemEl).toFixed(2), 
+      Number(manutencaoPorCemEl).toFixed(2)
+    ];
+    
+    gasChartData.datasets[0].data = [
+      Number(precoCompraG).toFixed(2), 
+      Number(custoPorCemGas).toFixed(2), 
+      Number(manutencaoPorCemGas).toFixed(2)
+    ];
+    elChart.update();
+    gasChart.update();
+  }
+  
+  return updateChartData;
+  
+};
+
+const chartUpdater = createChart();
+
+
+
 const calculateResults = () => {
   if (!Carro.modelo || !timeValue || !rangeValue || !gasValue) {
     return;
@@ -265,16 +481,18 @@ const calculateResults = () => {
   const litrosE = kmRodadosE / Carro.consumoE;
   const custoEnergiaE = litrosE * precoEnergia;
   const custoManutencaoE = kmRodadosE * Carro.manutencaoE;
-  const custoTotalE = custoEnergiaE + custoManutencaoE;
+  const custototalEl = custoEnergiaE + custoManutencaoE;
+ 
 
   // Cálculos para o modelo a combustão
-
   const kmRodadosG = parseFloat(rangeValue / timeValue);
   const litrosG = kmRodadosG / Carro.consumoG;
   const custoGasolinaG = litrosG * gasValue;
   const custoManutencaoG = kmRodadosG * Carro.manutencaoG;
   const custoTotalG = custoGasolinaG + custoManutencaoG;
-
+  
+ 
+  
   const emissaoG = kmRodadosG * 2.31;
   const emissaoE = kmRodadosE * 0.5;
   const emissao = ((emissaoG - emissaoE) / 1000) * timeValue;
@@ -282,7 +500,29 @@ const calculateResults = () => {
   // Diferença entre os dois modelos
   const economiaManutencao = custoManutencaoG - custoManutencaoE;
   const economia = custoGasolinaG - custoEnergiaE;
-  const economiaTotal = custoTotalG - custoTotalE;
+  const economiaTotal = custoTotalG - custototalEl;
+
+
+
+   // Cálculos para o gráfico:
+   const custoCincoAnosEl = (custoEnergiaE * 360) * 5;
+   const manutencaoCincoAnosEl = (custoManutencaoE * 360) * 5;
+   const custoCincoAnosGas = (custoGasolinaG * 360) * 5;
+   const manutencaoCincoAnosGas = (custoManutencaoG * 360) * 5;
+   const totalEl = Number(precoCompraEl) + custoCincoAnosEl + manutencaoCincoAnosEl;
+   const totalGas = Number(precoCompraG) + custoCincoAnosGas + manutencaoCincoAnosGas;
+
+
+/*   const precoPorCemEl = defineRate(totalEl, precoCompraEl);
+  const custoPorCemEl = defineRate(totalEl, custoCincoAnosEl);
+  const manutencaoPorCemEl = defineRate(totalEl, manutencaoCincoAnosEl);
+  
+  const precoPorCemGas = defineRate(totalGas, precoCompraG);
+  const custoPorCemGas = defineRate(totalGas, custoCincoAnosGas);
+  const manutencaoPorCemGas = defineRate(totalGas, manutencaoCincoAnosGas);
+ */
+
+
 
   document.querySelector(".km-rodados-dia").textContent = Math.round(kmRodadosG);
   document.querySelector(".combustivel-dia").textContent = custoGasolinaG
@@ -378,6 +618,15 @@ const calculateResults = () => {
   )
     .toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     .replace("R$", "");
-};
 
-calculateResults();
+  document.querySelector('.total-eletrico').textContent = totalEl.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+  document.querySelector('.total-termico').textContent = totalGas.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+
+    (chartUpdater(precoCompraEl, custoCincoAnosEl, manutencaoCincoAnosEl, precoCompraG, custoCincoAnosGas, manutencaoCincoAnosGas, totalEl, totalGas));
+  };
+
+  calculateResults();
+
+  
+ 
+
